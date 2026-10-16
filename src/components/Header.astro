@@ -1,4 +1,6 @@
 ---
+import Pole from "./Pole.astro";
+
 const links = [
   { href: "/services", label: "Services" },
   { href: "/#book", label: "Barbers" },
@@ -6,7 +8,7 @@ const links = [
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-white/10 bg-background">
+<header class="sticky top-0 z-50 bg-background" transition:persist="shop-header">
   <div class="mx-auto flex h-20 w-full max-w-6xl items-center justify-between gap-4 px-4">
     <a href="/" class="inline-flex items-center gap-3">
       <img
@@ -21,7 +23,7 @@ const links = [
     <nav aria-label="Shop" class="hidden items-center gap-7 md:flex">
       {
         links.map((link) => (
-          <a class="text-sm tracking-wide uppercase hover:text-primary" href={link.href}>
+          <a class="draw text-sm tracking-wide uppercase hover:text-primary" href={link.href}>
             {link.label}
           </a>
         ))
@@ -40,7 +42,7 @@ const links = [
       >
         {
           links.map((link) => (
-            <a class="text-sm tracking-wide uppercase" href={link.href}>
+            <a class="draw text-sm tracking-wide uppercase" href={link.href}>
               {link.label}
             </a>
           ))
@@ -49,4 +51,21 @@ const links = [
       </nav>
     </details>
   </div>
+  <Pole spin />
 </header>
+
+<script>
+  const bindHeader = () => {
+    const header = document.querySelector("header");
+    if (!header || header.dataset.bound) return;
+    header.dataset.bound = "true";
+    header.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        header.querySelector("details")?.removeAttribute("open");
+      });
+    });
+  };
+
+  bindHeader();
+  document.addEventListener("astro:page-load", bindHeader);
+</script>

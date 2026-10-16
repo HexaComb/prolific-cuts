@@ -1,0 +1,10 @@
+---
+interface Props {
+  spin?: boolean;
+  class?: string;
+}
+
+const { spin = false, class: className } = Astro.props;
+---
+
+<div class:list={["pole", spin && "pole-spin", className]} aria-hidden="true"></div>

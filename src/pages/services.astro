@@ -3,6 +3,8 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ServiceMenu from "../components/ServiceMenu.astro";
+import Pole from "../components/Pole.astro";
+import Clipper from "../components/Clipper.astro";
 import { getBarber, shop, squareMenu } from "../data/shop";
 
 const description =
@@ -13,7 +15,8 @@ const description =
   <Header />
   <main id="content" class="band-cream">
     <header class="mx-auto w-full max-w-6xl px-4 pt-16 pb-10">
-      <h1 class="text-5xl text-balance sm:text-6xl">Services</h1>
+      <h1 class="cut text-5xl text-balance sm:text-6xl">Services</h1>
+      <Clipper />
       <p class="mt-6 max-w-prose text-lg">
         One shop at {shop.address}. Nine barbers book on Square. Diego, Roger, and Nic also keep a
         Booksy menu, with that barber’s own times and prices.
@@ -23,7 +26,8 @@ const description =
         <a class="btn btn-line" href={shop.phoneHref}>{shop.phone}</a>
       </div>
     </header>
-    <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pb-20">
+    <Pole />
+    <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pt-16 pb-20">
       <section aria-labelledby="square-menu">
         <h2 id="square-menu" class="text-4xl sm:text-5xl">Square</h2>
         <p class="mt-4 max-w-prose text-lg">

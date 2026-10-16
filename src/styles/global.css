@@ -131,6 +131,16 @@
   html {
     @apply font-sans;
     color-scheme: dark;
+    caret-color: var(--primary);
+    scrollbar-color: var(--primary) var(--background);
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  td,
+  dd {
+    font-variant-numeric: tabular-nums;
   }
   h1, h2, h3 {
     font-family: var(--font-display);
@@ -162,6 +172,7 @@
   letter-spacing: 0.04em;
   line-height: 1;
   text-transform: uppercase;
+  transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-fill {
@@ -183,4 +194,124 @@
 
 .band-cream .btn-line:hover {
   background: oklch(0.2 0.012 60 / 0.06);
+}
+
+.pole {
+  height: 0.55rem;
+  background-color: #f4efe4;
+  background-image: repeating-linear-gradient(
+    -28deg,
+    #9e1b1b 0 14px,
+    #f4efe4 14px 24px,
+    #163a66 24px 38px,
+    #f4efe4 38px 48px
+  );
+  background-size: 56px 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pole-spin {
+    animation: pole-turn 2.8s linear infinite;
+  }
+}
+
+@keyframes pole-turn {
+  to {
+    background-position-x: 56px;
+  }
+}
+
+.scissors {
+  display: block;
+  width: 3.25rem;
+  height: auto;
+  margin-top: 0.85rem;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 200ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.draw:hover,
+.draw:focus-visible {
+  background-size: 100% 1px;
+}
+
+.service-cell {
+  transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-cell:hover {
+  background: oklch(0.19 0.008 60);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .cut {
+    animation: cut-open 0.64s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .cut-2 {
+    animation-delay: 0.14s;
+  }
+
+  .cut-3 {
+    animation-delay: 0.26s;
+  }
+
+  details[open] > nav {
+    animation: cut-open 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  ::view-transition-old(root) {
+    animation: 120ms cubic-bezier(0.16, 1, 0.3, 1) both fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation: 220ms cubic-bezier(0.16, 1, 0.3, 1) both fade-in;
+  }
+}
+
+@keyframes cut-open {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw {
+    background-image: none;
+  }
+
+  .draw:hover,
+  .draw:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 }

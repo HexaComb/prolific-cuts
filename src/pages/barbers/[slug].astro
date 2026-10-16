@@ -3,6 +3,8 @@ import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { barbers, getBarber, shop, squareServicesFor } from "../../data/shop";
+import Pole from "../../components/Pole.astro";
+import Clipper from "../../components/Clipper.astro";
 
 export function getStaticPaths() {
   return barbers.map((barber) => ({ params: { slug: barber.slug } }));
@@ -24,19 +26,23 @@ const description = barber.booksy
 <Base title={title} description={description}>
   <Header />
   <main id="content" class="band-cream">
-    <header class="mx-auto grid w-full max-w-6xl gap-8 px-4 pt-16 pb-10 md:grid-cols-[16rem_1fr] md:items-end">
-      <img
-        src={barber.photo}
-        alt=""
-        width="480"
-        height="640"
-        class="aspect-[3/4] w-full max-w-xs object-cover"
-      />
+    <header class="mx-auto grid w-full max-w-6xl grid-cols-[6.5rem_1fr] items-start gap-4 px-4 pt-16 pb-10 sm:grid-cols-[11rem_1fr] sm:gap-8">
+      <div class="relative">
+        <img
+          src={barber.photo}
+          alt=""
+          width="352"
+          height="469"
+          class="aspect-[3/4] w-full object-cover"
+        />
+        <Pole class="absolute inset-x-0 bottom-0" />
+      </div>
       <div>
         <p>
           <a class="underline underline-offset-4" href="/">Prolific Cuts</a>
         </p>
-        <h1 class="mt-4 text-5xl text-balance sm:text-6xl">{barber.name}</h1>
+        <h1 class="cut mt-4 text-5xl text-balance sm:text-6xl">{barber.name}</h1>
+        <Clipper />
         {barber.bookingName && <p class="mt-4 text-xl">Also on Booksy as {barber.bookingName}</p>}
         {barber.rating && <p class="mt-2">{barber.rating}</p>}
         {barber.bio && <p class="mt-4 max-w-prose text-lg">{barber.bio}</p>}
@@ -57,7 +63,8 @@ const description = barber.booksy
         </div>
       </div>
     </header>
-    <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pb-20">
+    <Pole />
+    <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pt-16 pb-20">
       <section aria-labelledby="square-heading">
         <h2 id="square-heading" class="text-4xl">Square</h2>
         <p class="mt-4 max-w-prose">
