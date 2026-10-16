@@ -344,12 +344,6 @@
   object-fit: cover;
 }
 
-.ig-tile span {
-  padding: 0.85rem 1rem 1.1rem;
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
 .ig-tile:hover img,
 .ig-tile:focus-visible img {
   opacity: 0.88;
