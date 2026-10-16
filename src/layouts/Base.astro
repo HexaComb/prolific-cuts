@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/video/hero-poster.jpg" />
+  </head>
+  <body>
+    <!--
+      THESIS: The shop name sits huge on its own film, and the next thing you do is book a named chair. It refuses the card dashboard.
+      OWN-WORLD: Near-black field, cream bands, sand fill buttons, square corners. Oswald caps for the name and section titles, Barlow for the menu. The real storefront video is the only photograph.
+      STORY: A visitor sees Prolific Cuts, the timed services with the barber who books them, and leaves for that Booksy page.
+      FIRST VIEWPORT: Solid black bar with the logo, wordmark, and a sand Book button. Below it, the slowed shop video, centered “Prolific Cuts” up to 6rem, then Book a chair and See services.
+      FORM: Beard X barbershop layout, pinned by the client. No seed; the request named the template.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <a
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50"
+      href="#content"
+    >
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>

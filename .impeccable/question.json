@@ -1,0 +1,74 @@
+{
+  "title": "Choose the visual world",
+  "question": "The direction on the table is the Guard Chart. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Guard Chart",
+      "kicker": "THE ROLL",
+      "lineage": "The numbered plastic guard set hung beside a barber's clippers",
+      "thesis": "Every cut is a number, a minute count, and a barber, read the way a chair already reads a guard.",
+      "palette": ["#e23d2b", "#f5f6f4", "#1a1a1a", "#b7bcc4"],
+      "materials": ["injection-molded guard", "stamped numerals", "steel blade"],
+      "viewport": "A full-width red guard plate stamped Prolific Cuts, with Diego, Roger, and Nic as three columns of numbered cuts and times.",
+      "risk": "It can turn into a spec sheet and lose the welcome if the numbers crowd out the people.",
+      "sketch": ".impeccable/sketches/assigned.png"
+    },
+    {
+      "id": "challenger-marquee",
+      "label": "Marquee Row",
+      "lineage": "A dark arcade aisle, one lit cabinet per game",
+      "thesis": "Each barber is a cabinet. You walk the row and commit to the chair whose marquee is lit.",
+      "case": "A row of names is a clear way to pick a barber, and it loses because a dark aisle hides the minutes and a bright, kid-friendly room.",
+      "palette": ["#0e0e12", "#3ee0ff", "#ff3d8a", "#f4f1c8"],
+      "materials": ["backlit marquee", "airbrush side art", "phosphor score"],
+      "viewport": "Three marquees in a dark row. The lit one opens that barber's times and prices.",
+      "risk": "It reads as a club, which fights a shop that cuts toddlers' hair in daylight.",
+      "sketch": ".impeccable/sketches/challenger-marquee.png",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-arcade-marquee-row-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/pop-culture-shelf-arcade-marquee-row.webp"
+    },
+    {
+      "id": "challenger-rail",
+      "label": "Select Rail",
+      "lineage": "A film editor's cutting bench, frames held between pins",
+      "thesis": "Services are frames on one strip. The minutes are the length of the frame, and a tape flag marks the cut in hand.",
+      "case": "Frame length is an honest picture of duration, and it loses because this visitor is not an editor and orange-on-black is not this shop.",
+      "palette": ["#0a0a0a", "#ff6a1a", "#f4f4f0"],
+      "materials": ["coarse film grain", "perforated rail", "folded tape flag"],
+      "viewport": "One horizontal rail of service frames, an orange flag on the chosen cut, three barbers hanging as trims below.",
+      "risk": "The metaphor buries the address, the welcome, and which book you are actually joining.",
+      "sketch": ".impeccable/sketches/challenger-rail.png",
+      "hero": "https://impeccable.style/worlds/cards/operate-a-cutting-bench-select-rail-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/operate-a-cutting-bench-select-rail.webp"
+    },
+    {
+      "id": "challenger-poster",
+      "label": "One Painted Cut",
+      "lineage": "A Polish film poster, one painted metaphor filling the sheet",
+      "thesis": "The first screen is one painted head, and the shop name bends to follow it.",
+      "case": "The craft is high, and it fuses poorly because one image cannot show three menus, three durations, and a clear book button.",
+      "palette": ["#6b2d5b", "#9a3412", "#c4a574", "#f2e6d4"],
+      "materials": ["gouache", "cheap poster stock", "hand-lettering"],
+      "viewport": "One full-bleed painted portrait, Prolific Cuts lettered along the jaw, the three books tucked inside the contour.",
+      "risk": "A visitor who needs a time and a booking link has to hunt for both.",
+      "sketch": ".impeccable/sketches/challenger-poster.png",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-polish-film-poster-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/posters-covers-sleeves-polish-film-poster.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "id": "canon",
+    "label": "The category standard",
+    "lineage": "The barbershop website this category always ships",
+    "thesis": "A dark fade photo, a thin gold line, and a Book button.",
+    "palette": ["#0c0c0c", "#c6a15b", "#f5f0e6", "#ffffff"],
+    "materials": ["black leather", "gold foil", "stock photography"],
+    "viewport": "A full-bleed dark portrait, the shop name in a serif, one gold Book button.",
+    "risk": "It looks like every other shop and says nothing about a bright room or three separate books.",
+    "sketch": ".impeccable/sketches/canon.png"
+  },
+  "steer": true
+}

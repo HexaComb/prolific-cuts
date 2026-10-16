@@ -1,0 +1,33 @@
+---
+import { shop } from "../data/shop";
+---
+
+<footer class="border-t border-white/10">
+  <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-14 sm:grid-cols-2">
+    <div class="space-y-3">
+      <p class="font-display text-3xl uppercase">Prolific Cuts</p>
+      <p>
+        <a class="underline-offset-4 hover:underline" href={shop.maps}>
+          {shop.address}<br />{shop.locality}
+        </a>
+      </p>
+      <p>
+        <a class="underline-offset-4 hover:underline" href={shop.phoneHref}>{shop.phone}</a>
+      </p>
+    </div>
+    <div class="space-y-3 sm:text-right">
+      <p>
+        <a class="underline-offset-4 hover:underline" href={shop.squareAppointments}>Book on Square</a>
+      </p>
+      <p>
+        <a class="underline-offset-4 hover:underline" href={shop.booksy}>Booksy chairs</a>
+      </p>
+      <p>
+        <a class="underline-offset-4 hover:underline" href="/services">Full service menu</a>
+      </p>
+      <p class="text-sm text-muted-foreground">
+        <a class="underline-offset-4 hover:underline" href={shop.square}>Listed Square page</a>
+      </p>
+    </div>
+  </div>
+</footer>

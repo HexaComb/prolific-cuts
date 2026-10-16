@@ -1,0 +1,87 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceMenu from "../components/ServiceMenu.astro";
+import { getBarber, shop, squareMenu } from "../data/shop";
+
+const description =
+  "Services at Prolific Cuts in Clovis: haircuts, beard work, kids’ cuts, hot towel, and color, with the time and the barber who books each one.";
+---
+
+<Base title="Services | Prolific Cuts, Clovis" description={description}>
+  <Header />
+  <main id="content" class="band-cream">
+    <header class="mx-auto w-full max-w-6xl px-4 pt-16 pb-10">
+      <h1 class="text-5xl text-balance sm:text-6xl">Services</h1>
+      <p class="mt-6 max-w-prose text-lg">
+        One shop at {shop.address}. Nine barbers book on Square. Diego, Roger, and Nic also keep a
+        Booksy menu, with that barber’s own times and prices.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn btn-fill" href="/#book">Book a chair</a>
+        <a class="btn btn-line" href={shop.phoneHref}>{shop.phone}</a>
+      </div>
+    </header>
+    <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pb-20">
+      <section aria-labelledby="square-menu">
+        <h2 id="square-menu" class="text-4xl sm:text-5xl">Square</h2>
+        <p class="mt-4 max-w-prose text-lg">
+          These are the shop’s Square appointments, with a starting price. Book the barber who is
+          listed on that service.
+        </p>
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full min-w-[40rem] text-left">
+            <caption class="sr-only">Square services at Prolific Cuts</caption>
+            <thead>
+              <tr class="border-b border-current/20 text-sm tracking-wide uppercase">
+                <th class="py-3 pr-4 font-medium" scope="col">Service</th>
+                <th class="py-3 pr-4 font-medium" scope="col">Barbers</th>
+                <th class="py-3 pr-4 font-medium" scope="col">Time</th>
+                <th class="py-3 font-medium" scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                squareMenu.map((service) => (
+                  <tr class="border-b border-current/15 align-top">
+                    <th class="py-4 pr-4 font-sans font-medium normal-case tracking-normal" scope="row">
+                      <a class="underline underline-offset-4" href={service.href}>{service.name}</a>
+                      {service.detail && <div class="mt-1 font-normal opacity-80">{service.detail}</div>}
+                    </th>
+                    <td class="py-4 pr-4">
+                      {service.staff.map((slug, index) => {
+                        const barber = getBarber(slug);
+                        return (
+                          <span>
+                            {index > 0 && ", "}
+                            <a class="underline underline-offset-4" href={`/barbers/${slug}`}>
+                              {barber?.shortName}
+                            </a>
+                          </span>
+                        );
+                      })}
+                    </td>
+                    <td class="py-4 pr-4 whitespace-nowrap">{service.time}</td>
+                    <td class="py-4 whitespace-nowrap">{service.price}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section aria-labelledby="booksy-menu">
+        <h2 id="booksy-menu" class="text-4xl sm:text-5xl">Booksy</h2>
+        <p class="mt-4 max-w-prose text-lg">
+          Diego, Roger, and Nic publish their own menus on Booksy. A struck price is the list. The
+          other figure is what Booksy is showing now.
+        </p>
+        <div class="mt-8">
+          <ServiceMenu />
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Base>

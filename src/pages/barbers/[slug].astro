@@ -1,0 +1,133 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { barbers, getBarber, shop, squareServicesFor } from "../../data/shop";
+
+export function getStaticPaths() {
+  return barbers.map((barber) => ({ params: { slug: barber.slug } }));
+}
+
+const { slug } = Astro.params;
+const barber = getBarber(slug ?? "");
+if (!barber) {
+  throw new Error(`Unknown barber: ${slug}`);
+}
+
+const squareServices = squareServicesFor(barber.slug);
+const title = `${barber.name} | Barber at Prolific Cuts, Clovis`;
+const description = barber.booksy
+  ? `Book ${barber.name} at Prolific Cuts, 493 W Shaw Ave, Ste A, Clovis, on Square or Booksy.`
+  : `Book ${barber.name} at Prolific Cuts, 493 W Shaw Ave, Ste A, Clovis, on Square.`;
+---
+
+<Base title={title} description={description}>
+  <Header />
+  <main id="content" class="band-cream">
+    <header class="mx-auto grid w-full max-w-6xl gap-8 px-4 pt-16 pb-10 md:grid-cols-[16rem_1fr] md:items-end">
+      <img
+        src={barber.photo}
+        alt=""
+        width="480"
+        height="640"
+        class="aspect-[3/4] w-full max-w-xs object-cover"
+      />
+      <div>
+        <p>
+          <a class="underline underline-offset-4" href="/">Prolific Cuts</a>
+        </p>
+        <h1 class="mt-4 text-5xl text-balance sm:text-6xl">{barber.name}</h1>
+        {barber.bookingName && <p class="mt-4 text-xl">Also on Booksy as {barber.bookingName}</p>}
+        {barber.rating && <p class="mt-2">{barber.rating}</p>}
+        {barber.bio && <p class="mt-4 max-w-prose text-lg">{barber.bio}</p>}
+        {barber.gap && <p class="mt-4 max-w-prose text-sm">{barber.gap}</p>}
+        {
+          barber.instagram && (
+            <p class="mt-4">
+              <a class="underline underline-offset-4" href={barber.instagram}>
+                Instagram
+              </a>
+            </p>
+          )
+        }
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn btn-fill" href={barber.square}>Book on Square</a>
+          {barber.booksy && <a class="btn btn-line" href={barber.booksy}>Book on Booksy</a>}
+          <a class="btn btn-line" href={shop.maps}>{shop.address}</a>
+        </div>
+      </div>
+    </header>
+    <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pb-20">
+      <section aria-labelledby="square-heading">
+        <h2 id="square-heading" class="text-4xl">Square</h2>
+        <p class="mt-4 max-w-prose">
+          Starting prices on the shop’s Square list. {barber.shortName} is assigned to these.
+        </p>
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full min-w-[32rem] text-left">
+            <caption class="sr-only">{barber.name} on Square</caption>
+            <thead>
+              <tr class="border-b border-current/20 text-sm tracking-wide uppercase">
+                <th class="py-3 pr-4 font-medium" scope="col">Service</th>
+                <th class="py-3 pr-4 font-medium" scope="col">Time</th>
+                <th class="py-3 font-medium" scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                squareServices.map((service) => (
+                  <tr class="border-b border-current/15 align-top">
+                    <th class="py-4 pr-4 font-sans font-medium normal-case tracking-normal" scope="row">
+                      <a class="underline underline-offset-4" href={service.href}>{service.name}</a>
+                      {service.detail && <div class="mt-1 font-normal opacity-80">{service.detail}</div>}
+                    </th>
+                    <td class="py-4 pr-4 whitespace-nowrap">{service.time}</td>
+                    <td class="py-4 whitespace-nowrap">{service.price}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+      {
+        barber.services.length > 0 && (
+          <section aria-labelledby="booksy-heading">
+            <h2 id="booksy-heading" class="text-4xl">Booksy</h2>
+            <p class="mt-4 max-w-prose">{shop.priceNote}</p>
+            <div class="mt-6 overflow-x-auto">
+              <table class="w-full min-w-[32rem] text-left">
+                <caption class="sr-only">{barber.name} on Booksy</caption>
+                <thead>
+                  <tr class="border-b border-current/20 text-sm tracking-wide uppercase">
+                    <th class="py-3 pr-4 font-medium" scope="col">Service</th>
+                    <th class="py-3 pr-4 font-medium" scope="col">Time</th>
+                    <th class="py-3 font-medium" scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {barber.services.map((service) => (
+                    <tr class="border-b border-current/15 align-top">
+                      <th class="py-4 pr-4 font-sans font-medium normal-case tracking-normal" scope="row">
+                        <div>{service.name}</div>
+                        {service.detail && <div class="mt-1 font-normal opacity-80">{service.detail}</div>}
+                      </th>
+                      <td class="py-4 pr-4 whitespace-nowrap">{service.time}</td>
+                      <td class="py-4 whitespace-nowrap">
+                        {service.promoPrice && (
+                          <span class="mr-2 line-through opacity-70">{service.listPrice}</span>
+                        )}
+                        {service.promoPrice ?? service.listPrice}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </main>
+  <Footer />
+</Base>

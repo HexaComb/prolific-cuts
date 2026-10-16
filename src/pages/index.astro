@@ -1,0 +1,244 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { barbers, resolveService, shop, type CatalogRef } from "../data/shop";
+
+const description =
+  "Prolific Cuts is a barbershop at 493 W Shaw Ave in Clovis. Haircuts, beard work, and kids’ cuts, each with a time. Book a chair on Square. Diego, Roger, and Nic are also on Booksy.";
+
+const featured: CatalogRef[] = [
+  { slug: "diego-gonzalez", service: "Detailed haircut" },
+  { slug: "roger-bandz", service: "Haircut" },
+  { slug: "nic", service: "Male haircut" },
+  { slug: "diego-gonzalez", service: "Haircut and beard" },
+  { slug: "roger-bandz", service: "Kid’s haircut" },
+  { slug: "diego-gonzalez", service: "Beard trim and work" },
+];
+---
+
+<Base title="Prolific Cuts | Barbershop in Clovis" description={description}>
+  <Header />
+  <main id="content">
+    <section
+      class="relative isolate flex min-h-[calc(100svh-5rem)] items-center bg-[url('/video/hero-poster.jpg')] bg-cover bg-center"
+      aria-label="Prolific Cuts"
+    >
+      <video
+        id="hero-video"
+        class="absolute inset-0 size-full object-cover motion-reduce:hidden"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="/video/hero-poster.jpg"
+        preload="metadata"
+      >
+        <source src="/video/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-black/65"></div>
+      <div class="relative z-10 mx-auto w-full max-w-4xl px-4 py-20 text-center">
+        <h1 class="text-[clamp(3.5rem,10vw,6rem)] text-balance">Prolific Cuts</h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-balance sm:text-xl">
+          Haircuts, beards, and kids’ cuts at {shop.address}, {shop.locality}. Every service has a
+          time. You book the chair that does it.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a class="btn btn-fill" href="#book">Book a chair</a>
+          <a class="btn btn-line" href="#services">See services</a>
+        </div>
+      </div>
+      <button
+        id="hero-pause"
+        class="btn btn-line absolute right-4 bottom-4 z-10 min-h-10 bg-black/70 px-3 text-base"
+        type="button"
+        aria-pressed="false"
+      >
+        Pause video
+      </button>
+    </section>
+
+    <section class="band-cream" aria-labelledby="shop-heading">
+      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-24 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+        <h2 id="shop-heading" class="text-5xl text-balance sm:text-6xl">The shop on Shaw</h2>
+        <div class="max-w-prose space-y-4 text-lg">
+          <p>
+            Prolific Cuts is at {shop.address}, {shop.locality}. The window says walk-ins are
+            welcome. If you want a particular barber, book that chair.
+          </p>
+          <p>
+            The room takes children, including first haircuts. Listings describe a
+            wheelchair-accessible entrance, parking, and restroom.
+          </p>
+          <p>Booksy lists the shop at {shop.booksyRating}.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="scroll-mt-24" aria-labelledby="services-heading">
+      <div class="mx-auto w-full max-w-6xl px-4 py-24">
+        <div class="max-w-3xl space-y-4">
+          <h2 id="services-heading" class="text-5xl text-balance sm:text-6xl">Services</h2>
+          <p class="max-w-prose text-lg text-muted-foreground">
+            Each price belongs to one barber. A struck figure is the list. The other is what Booksy
+            is showing now.
+            <a class="underline underline-offset-4" href="/services">Open the full menu.</a>
+          </p>
+        </div>
+        <ul class="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {
+            featured.map((ref) => {
+              const { barber, service } = resolveService(ref);
+              return (
+                <li class="flex flex-col gap-4 bg-background p-6">
+                  <h3 class="text-3xl">{service.name}</h3>
+                  <p>
+                    <a class="underline underline-offset-4" href={`/barbers/${barber.slug}`}>
+                      {barber.name}
+                    </a>
+                  </p>
+                  <p class="mt-auto flex items-baseline justify-between gap-3 text-lg">
+                    <span>{service.time}</span>
+                    <span>
+                      {service.promoPrice && (
+                        <span class="mr-2 text-muted-foreground line-through">{service.listPrice}</span>
+                      )}
+                      {service.promoPrice ?? service.listPrice}
+                    </span>
+                  </p>
+                  {
+                    barber.booksy && (
+                      <a class="btn btn-line" href={barber.booksy}>
+                        Book on Booksy
+                      </a>
+                    )
+                  }
+                </li>
+              );
+            })
+          }
+        </ul>
+        <p class="mt-6 max-w-prose text-sm text-muted-foreground">{shop.priceNote}</p>
+      </div>
+    </section>
+
+    <section id="book" class="band-cream scroll-mt-24" aria-labelledby="book-heading">
+      <div class="mx-auto w-full max-w-6xl px-4 py-24">
+        <div class="flex flex-wrap items-end justify-between gap-6">
+          <div class="max-w-2xl space-y-4">
+            <h2 id="book-heading" class="text-5xl text-balance sm:text-6xl">Book a chair</h2>
+            <p class="text-lg">
+              Every chair books on Square. Diego, Roger, and Nic also keep a Booksy page, and both
+              links are on their cards. Walk in if the chair you need is open. Call the shop if you
+              are sorting a time.
+            </p>
+          </div>
+          <a class="btn btn-line" href={shop.phoneHref}>{shop.phone}</a>
+        </div>
+        <ul class="mt-12 grid gap-10 md:grid-cols-3">
+          {
+            barbers.map((barber) => (
+              <li class="flex flex-col gap-3 border-t border-current/20 pt-6">
+                <img
+                  src={barber.photo}
+                  alt=""
+                  width="480"
+                  height="640"
+                  class="aspect-[3/4] w-full object-cover"
+                />
+                <h3 class="text-4xl">
+                  <a class="underline-offset-4 hover:underline" href={`/barbers/${barber.slug}`}>
+                    {barber.name}
+                  </a>
+                </h3>
+                {barber.bookingName && <p>Also on Booksy as {barber.bookingName}</p>}
+                {barber.rating && <p>{barber.rating}</p>}
+                {barber.gap && <p class="text-sm">{barber.gap}</p>}
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <a class="btn btn-fill" href={barber.square}>Book on Square</a>
+                  {barber.booksy && (
+                    <a class="btn btn-line" href={barber.booksy}>Book on Booksy</a>
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section id="visit" class="scroll-mt-24" aria-labelledby="visit-heading">
+      <div class="mx-auto grid w-full max-w-6xl gap-12 px-4 py-24 md:grid-cols-2">
+        <div class="space-y-4">
+          <h2 id="visit-heading" class="text-5xl text-balance sm:text-6xl">Visit</h2>
+          <p class="text-xl">
+            <a class="underline underline-offset-4" href={shop.maps}>
+              {shop.address}<br />{shop.locality}
+            </a>
+          </p>
+          <p class="max-w-prose text-muted-foreground">
+            Monday is 10:00 a.m. on the listings that agree, and 8:00 a.m. on one directory. Call if
+            you are coming at opening. Each barber’s bookable hours are on their Booksy page and can
+            differ from the shop day.
+          </p>
+        </div>
+        <dl class="divide-y divide-white/15 border-y border-white/15">
+          {
+            shop.hours.map(([day, time]) => (
+              <div class="flex items-baseline justify-between gap-4 py-4 text-lg">
+                <dt>{day}</dt>
+                <dd>{time}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>("#hero-video");
+  const button = document.querySelector<HTMLButtonElement>("#hero-pause");
+  if (video && button) {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const rate = 0.45;
+
+    const setPaused = (paused: boolean) => {
+      button.setAttribute("aria-pressed", String(paused));
+      button.textContent = paused ? "Play video" : "Pause video";
+    };
+
+    const slow = () => {
+      video.playbackRate = rate;
+    };
+
+    const stop = () => {
+      video.pause();
+      video.removeAttribute("autoplay");
+      setPaused(true);
+    };
+
+    video.addEventListener("loadedmetadata", slow);
+    video.addEventListener("play", slow);
+    slow();
+
+    if (reduced.matches) stop();
+
+    button.addEventListener("click", () => {
+      if (video.paused) {
+        slow();
+        void video.play();
+        setPaused(false);
+      } else {
+        video.pause();
+        setPaused(true);
+      }
+    });
+
+    reduced.addEventListener("change", () => {
+      if (reduced.matches) stop();
+    });
+  }
+</script>

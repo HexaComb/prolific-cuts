@@ -1,0 +1,52 @@
+---
+const links = [
+  { href: "/services", label: "Services" },
+  { href: "/#book", label: "Barbers" },
+  { href: "/#visit", label: "Visit" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-background">
+  <div class="mx-auto flex h-20 w-full max-w-6xl items-center justify-between gap-4 px-4">
+    <a href="/" class="inline-flex items-center gap-3">
+      <img
+        src="/logo.png"
+        alt=""
+        width="44"
+        height="44"
+        class="size-11 rounded-full bg-foreground p-0.5"
+      />
+      <span class="font-display text-2xl leading-none tracking-wide uppercase">Prolific Cuts</span>
+    </a>
+    <nav aria-label="Shop" class="hidden items-center gap-7 md:flex">
+      {
+        links.map((link) => (
+          <a class="text-sm tracking-wide uppercase hover:text-primary" href={link.href}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a class="btn btn-fill" href="/#book">Book</a>
+    </nav>
+    <details class="group relative md:hidden">
+      <summary
+        class="btn btn-line cursor-pointer list-none px-4 [&::-webkit-details-marker]:hidden"
+      >
+        Menu
+      </summary>
+      <nav
+        aria-label="Shop"
+        class="absolute right-0 z-50 mt-2 flex w-52 flex-col gap-3 border border-white/15 bg-background p-4"
+      >
+        {
+          links.map((link) => (
+            <a class="text-sm tracking-wide uppercase" href={link.href}>
+              {link.label}
+            </a>
+          ))
+        }
+        <a class="btn btn-fill" href="/#book">Book</a>
+      </nav>
+    </details>
+  </div>
+</header>

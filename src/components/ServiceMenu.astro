@@ -1,0 +1,63 @@
+---
+import { catalog, resolveService, shop } from "../data/shop";
+---
+
+<div class="space-y-16">
+  {
+    catalog.map((group) => (
+      <section id={group.id} class="scroll-mt-24" aria-labelledby={`${group.id}-title`}>
+        <h2 id={`${group.id}-title`} class="text-4xl sm:text-5xl">
+          {group.title}
+        </h2>
+        <p class="mt-4 max-w-prose text-lg">{group.lede}</p>
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full min-w-[40rem] text-left">
+            <caption class="sr-only">{group.title} at Prolific Cuts</caption>
+            <thead>
+              <tr class="border-b border-current/20 text-sm tracking-wide uppercase">
+                <th class="py-3 pr-4 font-medium" scope="col">Service</th>
+                <th class="py-3 pr-4 font-medium" scope="col">Barber</th>
+                <th class="py-3 pr-4 font-medium" scope="col">Time</th>
+                <th class="py-3 pr-4 font-medium" scope="col">Price</th>
+                <th class="py-3 font-medium" scope="col">
+                  <span class="sr-only">Book</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {group.items.map((ref) => {
+                const { barber, service } = resolveService(ref);
+                return (
+                  <tr class="border-b border-current/15 align-top">
+                    <th class="py-4 pr-4 font-sans font-medium normal-case tracking-normal" scope="row">
+                      <div>{service.name}</div>
+                      {service.detail && <div class="mt-1 font-normal opacity-80">{service.detail}</div>}
+                    </th>
+                    <td class="py-4 pr-4">
+                      <a class="underline underline-offset-4" href={`/barbers/${barber.slug}`}>
+                        {barber.name}
+                      </a>
+                    </td>
+                    <td class="py-4 pr-4 whitespace-nowrap">{service.time}</td>
+                    <td class="py-4 pr-4 whitespace-nowrap">
+                      {service.promoPrice && (
+                        <span class="mr-2 line-through opacity-70">{service.listPrice}</span>
+                      )}
+                      {service.promoPrice ?? service.listPrice}
+                    </td>
+                    <td class="py-4 text-right">
+                      <a class="underline underline-offset-4" href={barber.booksy}>
+                        Book on Booksy
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))
+  }
+  <p class="text-sm opacity-80">{shop.priceNote}</p>
+</div>
