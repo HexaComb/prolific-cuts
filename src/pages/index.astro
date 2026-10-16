@@ -4,19 +4,11 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Pole from "../components/Pole.astro";
 import Clipper from "../components/Clipper.astro";
-import { barbers, resolveService, shop, type CatalogRef } from "../data/shop";
+import { barbers, shop, squareMenu } from "../data/shop";
+import { instagram } from "../data/instagram";
 
 const description =
   "Prolific Cuts is a barbershop at 493 W Shaw Ave in Clovis. Haircuts, beard work, and kids’ cuts, each with a time. Book a chair on Square. Diego, Roger, and Nic are also on Booksy.";
-
-const featured: CatalogRef[] = [
-  { slug: "diego-gonzalez", service: "Detailed haircut" },
-  { slug: "roger-bandz", service: "Haircut" },
-  { slug: "nic", service: "Male haircut" },
-  { slug: "diego-gonzalez", service: "Haircut and beard" },
-  { slug: "roger-bandz", service: "Kid’s haircut" },
-  { slug: "diego-gonzalez", service: "Beard trim and work" },
-];
 ---
 
 <Base title="Prolific Cuts | Barbershop in Clovis" description={description}>
@@ -81,54 +73,70 @@ const featured: CatalogRef[] = [
       </div>
     </section>
 
-    <section id="services" class="scroll-mt-24" aria-labelledby="services-heading">
+    <section id="chair" class="scroll-mt-24" aria-labelledby="chair-heading">
+      <div class="mx-auto w-full max-w-6xl px-4 py-24">
+        <div class="flex flex-wrap items-end justify-between gap-6">
+          <div class="max-w-2xl space-y-4">
+            <h2 id="chair-heading" class="text-5xl text-balance sm:text-6xl">From the chair</h2>
+            <Clipper />
+            <p class="max-w-prose text-lg">
+              Photos from the shop’s
+              <a class="underline underline-offset-4" href={instagram.href}>Instagram</a>.
+            </p>
+          </div>
+          <a class="btn btn-line" href={instagram.href}>Instagram</a>
+        </div>
+        <ul class="ig-board">
+          {
+            instagram.posts.map((post) => (
+              <li>
+                <a class="ig-tile" href={post.href}>
+                  <img
+                    src={post.src}
+                    alt={post.alt}
+                    width="640"
+                    height="640"
+                    style={`object-position: ${post.position}`}
+                  />
+                  <span>{post.caption}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section id="services" class="band-cream scroll-mt-24" aria-labelledby="services-heading">
       <div class="mx-auto w-full max-w-6xl px-4 py-24">
         <div class="max-w-3xl space-y-4">
           <h2 id="services-heading" class="text-5xl text-balance sm:text-6xl">Services</h2>
           <Clipper />
-          <p class="max-w-prose text-lg text-muted-foreground">
-            Each price belongs to one barber. A struck figure is the list. The other is what Booksy
-            is showing now.
+          <p class="max-w-prose text-lg">
+            Any chair can book these. The time is the appointment, and the price is where Square
+            starts.
             <a class="underline underline-offset-4" href="/services">Open the full menu.</a>
           </p>
         </div>
         <ul class="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
           {
-            featured.map((ref) => {
-              const { barber, service } = resolveService(ref);
-              return (
-                <li class="service-cell flex flex-col gap-4 bg-background p-6">
-                  <h3 class="text-3xl">{service.name}</h3>
-                  <p>
-                    <a class="underline underline-offset-4" href={`/barbers/${barber.slug}`}>
-                      {barber.name}
-                    </a>
-                  </p>
-                  <p class="mt-auto flex items-baseline justify-between gap-3 text-lg">
-                    <span>{service.time}</span>
-                    <span>
-                      {service.promoPrice && (
-                        <span class="mr-2 text-muted-foreground line-through">{service.listPrice}</span>
-                      )}
-                      {service.promoPrice ?? service.listPrice}
-                    </span>
-                  </p>
-                  {
-                    barber.booksy && (
-                      <a class="btn btn-line" href={barber.booksy}>
-                        Book on Booksy
-                      </a>
-                    )
-                  }
-                </li>
-              );
-            })
+            squareMenu.map((service) => (
+              <li class="service-cell flex flex-col gap-4 bg-background p-6">
+                <h3 class="text-3xl">{service.name}</h3>
+                {service.detail && <p class="text-muted-foreground">{service.detail}</p>}
+                <p class="mt-auto flex items-baseline justify-between gap-3 text-lg">
+                  <span>{service.time}</span>
+                  <span>{service.price}</span>
+                </p>
+                <a class="btn btn-line" href={service.href}>Book on Square</a>
+              </li>
+            ))
           }
         </ul>
-        <p class="mt-6 max-w-prose text-sm text-muted-foreground">{shop.priceNote}</p>
       </div>
     </section>
 
+    <Pole />
     <section id="book" class="band-cream scroll-mt-24" aria-labelledby="book-heading">
       <div class="mx-auto w-full max-w-6xl px-4 py-24">
         <div class="flex flex-wrap items-end justify-between gap-6">
@@ -143,35 +151,35 @@ const featured: CatalogRef[] = [
           </div>
           <a class="btn btn-line" href={shop.phoneHref}>{shop.phone}</a>
         </div>
-        <ul class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="barber-board">
           {
             barbers.map((barber) => (
-              <li class="grid grid-cols-[4.75rem_1fr] items-start gap-3 border-t border-current/20 pt-5">
-                <div class="relative">
+              <li class="barber-card">
+                <div class="barber-photo">
                   <img
                     src={barber.photo}
                     alt=""
-                    width="272"
-                    height="363"
-                    class="aspect-[3/4] w-full object-cover"
+                    width="176"
+                    height="235"
+                    class="block h-full w-full object-cover"
                   />
                   <Pole class="absolute inset-x-0 bottom-0" />
                 </div>
-                <div class="flex min-w-0 flex-col gap-2">
-                  <h3 class="text-2xl sm:text-3xl">
-                    <a class="draw" href={`/barbers/${barber.slug}`}>
-                      {barber.name}
-                    </a>
-                  </h3>
+                <h3 class="barber-name">
+                  <a class="draw" href={`/barbers/${barber.slug}`}>
+                    {barber.name}
+                  </a>
+                </h3>
+                <div class="barber-meta">
                   {barber.bookingName && <p>Also on Booksy as {barber.bookingName}</p>}
                   {barber.rating && <p>{barber.rating}</p>}
-                  {barber.gap && <p class="text-sm">{barber.gap}</p>}
-                  <div class="mt-2 flex flex-wrap gap-2">
-                    <a class="btn btn-fill" href={barber.square}>Book on Square</a>
-                    {barber.booksy && (
-                      <a class="btn btn-line" href={barber.booksy}>Book on Booksy</a>
-                    )}
-                  </div>
+                  {barber.gap && <p>{barber.gap}</p>}
+                </div>
+                <div class="barber-actions">
+                  <a class="btn btn-fill" href={barber.square}>Book on Square</a>
+                  {barber.booksy && (
+                    <a class="btn btn-line" href={barber.booksy}>Book on Booksy</a>
+                  )}
                 </div>
               </li>
             ))
@@ -190,10 +198,11 @@ const featured: CatalogRef[] = [
               {shop.address}<br />{shop.locality}
             </a>
           </p>
-          <p class="max-w-prose text-muted-foreground">
-            Monday is 10:00 a.m. on the listings that agree, and 8:00 a.m. on one directory. Call if
-            you are coming at opening. Each barber’s bookable hours are on their Booksy page and can
-            differ from the shop day.
+          <p class="max-w-prose">
+            Walk in during these hours. Call
+            <a class="underline underline-offset-4" href={shop.phoneHref}>{shop.phone}</a>
+            if you are coming right when we open. If you want a particular barber, book that chair.
+            They may not be in the whole time the shop is open.
           </p>
         </div>
         <dl class="divide-y divide-white/15 border-y border-white/15">

@@ -297,6 +297,7 @@ export const barbers: Barber[] = [
     shortName: "Peda",
     square: squareStaff("ju4ne94ja9cby3"),
     photo: "/barbers/peda-thik.jpg",
+    instagram: "https://www.instagram.com/pedacuts/",
     bio: "Hello, my name is Peda. I’m the owner of Prolific Cuts. I’ve been in the hair industry for 11 years. I take pride in my work and in the service for every client who sits in my chair.",
     services: [],
   },

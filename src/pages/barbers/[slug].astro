@@ -51,7 +51,7 @@ const description = barber.booksy
           barber.instagram && (
             <p class="mt-4">
               <a class="underline underline-offset-4" href={barber.instagram}>
-                Instagram
+                {barber.slug === "peda-thik" ? "@pedacuts" : "Instagram"}
               </a>
             </p>
           )

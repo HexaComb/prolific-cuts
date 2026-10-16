@@ -1,5 +1,6 @@
 ---
 import { shop } from "../data/shop";
+import { instagram } from "../data/instagram";
 import Pole from "./Pole.astro";
 ---
 
@@ -27,9 +28,21 @@ import Pole from "./Pole.astro";
       <p>
         <a class="underline-offset-4 hover:underline" href="/services">Full service menu</a>
       </p>
+      <p>
+        <a class="underline-offset-4 hover:underline" href={instagram.href}>{instagram.handle}</a>
+      </p>
       <p class="text-sm text-muted-foreground">
         <a class="underline-offset-4 hover:underline" href={shop.square}>Listed Square page</a>
       </p>
     </div>
   </div>
+  <p class="pb-6 text-center text-xs text-muted-foreground/70">
+    <a
+      class="underline-offset-4 hover:underline"
+      href="https://hexacombllc.com"
+      rel="noopener noreferrer"
+    >
+      Built by Hexacomb LLC
+    </a>
+  </p>
 </footer>
