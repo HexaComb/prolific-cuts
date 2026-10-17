@@ -3,6 +3,7 @@ export type InstagramPost = {
   href: string;
   alt: string;
   position: string;
+  tag: string;
 };
 
 /** Stills from https://www.instagram.com/prolificcutsbarbershop/ as of 16 October 2026. */
@@ -15,36 +16,42 @@ export const instagram = {
       href: "https://www.instagram.com/prolificcutsbarbershop/p/C_TuVSUyE0g/",
       alt: "The Clovis Roundup page “Local barbers help cut back-to-school costs,” with the Prolific Cuts team in white shirts.",
       position: "center 22%",
+      tag: "The Crew",
     },
     {
       src: "/instagram/leo.jpg",
       href: "https://www.instagram.com/pedacuts/reel/DeVt452i1TW/",
       alt: "A smiling boy in a red cape with a fresh fade, in the shop.",
       position: "center 22%",
+      tag: "Fresh Fade",
     },
     {
       src: "/instagram/braids.jpg",
       href: "https://www.instagram.com/diegos_cutz/reel/DeVJvfUyJPF/",
       alt: "A taper being lined under cornrow braids, with a gold clipper and a blue glove.",
       position: "center 42%",
+      tag: "Sharp Line-Up",
     },
     {
       src: "/instagram/taper.jpg",
       href: "https://www.instagram.com/diegos_cutz/reel/DeTHm8cM2xg/",
       alt: "Side view of a short dark fade, in a red and white checkered cape.",
       position: "center 58%",
+      tag: "Clean Taper",
     },
     {
       src: "/instagram/shop.jpg",
       href: "https://www.instagram.com/prolificcutsbarbershop/reel/DcIefURo_O6/",
       alt: "The Prolific Cuts storefront at dusk, barber pole lit, shop name on the plaza sign.",
       position: "center 88%",
+      tag: "Shaw Ave",
     },
     {
       src: "/instagram/family.jpg",
       href: "https://www.instagram.com/pedacuts/reel/DbMN5y5yKug/",
       alt: "A boy smiling beside the chair while a baby in a blue cape gets a haircut.",
       position: "center 78%",
+      tag: "Kids Welcome",
     },
   ] satisfies InstagramPost[],
 };

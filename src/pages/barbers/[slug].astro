@@ -16,6 +16,7 @@ if (!barber) {
   throw new Error(`Unknown barber: ${slug}`);
 }
 
+const chairNumber = barbers.findIndex((b) => b.slug === barber.slug) + 1;
 const squareServices = squareServicesFor(barber.slug);
 const title = `${barber.name} | Barber at Prolific Cuts, Clovis`;
 const description = barber.booksy
@@ -26,32 +27,43 @@ const description = barber.booksy
 <Base title={title} description={description}>
   <Header />
   <main id="content" class="band-cream">
-    <header class="mx-auto grid w-full max-w-6xl grid-cols-[6.5rem_1fr] items-start gap-4 px-4 pt-16 pb-10 sm:grid-cols-[11rem_1fr] sm:gap-8">
-      <div class="relative">
-        <img
-          src={barber.photo}
-          alt=""
-          width="352"
-          height="469"
-          class="aspect-[3/4] w-full object-cover"
-        />
-        <Pole class="absolute inset-x-0 bottom-0" />
+    <header class="mx-auto grid w-full max-w-6xl grid-cols-[7.5rem_1fr] items-start gap-6 px-4 pt-16 pb-12 sm:grid-cols-[13rem_1fr] sm:gap-10">
+      <div class="ig-tile p-2">
+        <div class="ig-frame">
+          <img
+            src={barber.photo}
+            alt=""
+            width="352"
+            height="469"
+            class="aspect-[3/4] w-full object-cover"
+          />
+          <Pole class="absolute inset-x-0 bottom-0" />
+        </div>
+        <div class="ig-footer">
+          <span class="ig-tag">
+            <span class="ig-tag-bar" />
+            Chair 0{chairNumber}
+          </span>
+          {barber.slug === "peda-thik" && <span class="ig-arrow">Owner</span>}
+        </div>
       </div>
       <div>
-        <p>
-          <a class="underline underline-offset-4" href="/">Prolific Cuts</a>
+        <p class="mb-2">
+          <a class="section-index draw" href="/">
+            ← Prolific Cuts
+          </a>
         </p>
-        <h1 class="cut mt-4 text-5xl text-balance sm:text-6xl">{barber.name}</h1>
-        <Tool tool="clippers" />
-        {barber.bookingName && <p class="mt-4 text-xl">Also on Booksy as {barber.bookingName}</p>}
-        {barber.rating && <p class="mt-2">{barber.rating}</p>}
-        {barber.bio && <p class="mt-4 max-w-prose text-lg">{barber.bio}</p>}
-        {barber.gap && <p class="mt-4 max-w-prose text-sm">{barber.gap}</p>}
+        <h1 class="cut text-5xl text-balance sm:text-6xl">{barber.name}</h1>
+        <Tool tool="clippers" label={`Chair 0${chairNumber} • Clovis`} />
+        {barber.bookingName && <p class="mt-4 text-xl font-medium">Also on Booksy as {barber.bookingName}</p>}
+        {barber.rating && <p class="mt-2"><span class="rating-chip">★ {barber.rating}</span></p>}
+        {barber.bio && <p class="shop-note-card mt-5 max-w-prose text-lg">{barber.bio}</p>}
+        {barber.gap && <p class="mt-4 max-w-prose text-sm opacity-85">{barber.gap}</p>}
         {
           barber.instagram && (
             <p class="mt-4">
-              <a class="underline underline-offset-4" href={barber.instagram}>
-                {barber.slug === "peda-thik" ? "@pedacuts" : "Instagram"}
+              <a class="draw font-medium underline underline-offset-4" href={barber.instagram}>
+                {barber.slug === "peda-thik" ? "@pedacuts" : "Instagram"} ↗
               </a>
             </p>
           )
@@ -66,31 +78,36 @@ const description = barber.booksy
     <Pole />
     <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pt-16 pb-20">
       <section aria-labelledby="square-heading">
-        <h2 id="square-heading" class="text-4xl">Square</h2>
-        <p class="mt-4 max-w-prose">
+        <p class="section-index">01 / Square Appointments</p>
+        <h2 id="square-heading" class="text-4xl sm:text-5xl">Square</h2>
+        <p class="mt-4 max-w-prose text-lg">
           Pull up a chair with {barber.shortName} on Square. Each service below shows the time
           blocked out for your appointment and the starting price.
         </p>
-        <div class="mt-6 overflow-x-auto">
+        <div class="menu-sheet mt-6 overflow-x-auto">
           <table class="w-full min-w-[32rem] text-left">
             <caption class="sr-only">{barber.name} on Square</caption>
             <thead>
-              <tr class="border-b border-current/20 text-sm tracking-wide uppercase">
-                <th class="py-3 pr-4 font-medium" scope="col">Service</th>
-                <th class="py-3 pr-4 font-medium" scope="col">Time</th>
-                <th class="py-3 font-medium" scope="col">Price</th>
+              <tr class="border-b-2 border-current/25 font-display text-sm tracking-wider uppercase">
+                <th class="py-3 pr-4 font-semibold" scope="col">Service</th>
+                <th class="py-3 pr-4 font-semibold" scope="col">Time</th>
+                <th class="py-3 font-semibold" scope="col">Price</th>
               </tr>
             </thead>
             <tbody>
               {
                 squareServices.map((service) => (
-                  <tr class="border-b border-current/15 align-top">
+                  <tr class="menu-row border-b border-current/15 align-top last:border-b-0">
                     <th class="py-4 pr-4 font-sans font-medium normal-case tracking-normal" scope="row">
-                      <a class="underline underline-offset-4" href={service.href}>{service.name}</a>
+                      <a class="draw text-lg font-semibold underline underline-offset-4" href={service.href}>{service.name}</a>
                       {service.detail && <div class="mt-1 font-normal opacity-80">{service.detail}</div>}
                     </th>
-                    <td class="py-4 pr-4 whitespace-nowrap">{service.time}</td>
-                    <td class="py-4 whitespace-nowrap">{service.price}</td>
+                    <td class="py-4 pr-4 whitespace-nowrap">
+                      <span class="time-stamp">{service.time}</span>
+                    </td>
+                    <td class="py-4 whitespace-nowrap">
+                      <span class="price-badge">{service.price}</span>
+                    </td>
                   </tr>
                 ))
               }
@@ -101,31 +118,34 @@ const description = barber.booksy
       {
         barber.services.length > 0 && (
           <section aria-labelledby="booksy-heading">
-            <h2 id="booksy-heading" class="text-4xl">Booksy</h2>
-            <p class="mt-4 max-w-prose">{shop.priceNote}</p>
-            <div class="mt-6 overflow-x-auto">
+            <p class="section-index">02 / Booksy Profile</p>
+            <h2 id="booksy-heading" class="text-4xl sm:text-5xl">Booksy</h2>
+            <p class="mt-4 max-w-prose text-lg">{shop.priceNote}</p>
+            <div class="menu-sheet mt-6 overflow-x-auto">
               <table class="w-full min-w-[32rem] text-left">
                 <caption class="sr-only">{barber.name} on Booksy</caption>
                 <thead>
-                  <tr class="border-b border-current/20 text-sm tracking-wide uppercase">
-                    <th class="py-3 pr-4 font-medium" scope="col">Service</th>
-                    <th class="py-3 pr-4 font-medium" scope="col">Time</th>
-                    <th class="py-3 font-medium" scope="col">Price</th>
+                  <tr class="border-b-2 border-current/25 font-display text-sm tracking-wider uppercase">
+                    <th class="py-3 pr-4 font-semibold" scope="col">Service</th>
+                    <th class="py-3 pr-4 font-semibold" scope="col">Time</th>
+                    <th class="py-3 font-semibold" scope="col">Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   {barber.services.map((service) => (
-                    <tr class="border-b border-current/15 align-top">
+                    <tr class="menu-row border-b border-current/15 align-top last:border-b-0">
                       <th class="py-4 pr-4 font-sans font-medium normal-case tracking-normal" scope="row">
-                        <div>{service.name}</div>
+                        <div class="text-lg font-semibold">{service.name}</div>
                         {service.detail && <div class="mt-1 font-normal opacity-80">{service.detail}</div>}
                       </th>
-                      <td class="py-4 pr-4 whitespace-nowrap">{service.time}</td>
+                      <td class="py-4 pr-4 whitespace-nowrap">
+                        <span class="time-stamp">{service.time}</span>
+                      </td>
                       <td class="py-4 whitespace-nowrap">
                         {service.promoPrice && (
                           <span class="mr-2 line-through opacity-70">{service.listPrice}</span>
                         )}
-                        {service.promoPrice ?? service.listPrice}
+                        <span class="price-badge">{service.promoPrice ?? service.listPrice}</span>
                       </td>
                     </tr>
                   ))}

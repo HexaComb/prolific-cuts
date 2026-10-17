@@ -15,7 +15,7 @@ const description =
   <Header />
   <main id="content">
     <section
-      class="relative isolate flex min-h-[calc(100svh-5rem)] items-center bg-[url('/video/hero-poster.jpg')] bg-cover bg-center"
+      class="relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-[url('/video/hero-poster.jpg')] bg-cover bg-center"
       aria-label="Prolific Cuts"
     >
       <video
@@ -31,19 +31,167 @@ const description =
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
       <div class="scrim absolute inset-0"></div>
+
       <div class="relative z-10 mx-auto w-full max-w-4xl px-4 py-20 text-center">
-        <h1 class="cut text-[clamp(3.5rem,10vw,6rem)] text-balance">Prolific Cuts</h1>
+        <div class="cut">
+          <p class="sign-eyebrow">493 W Shaw Ave · Clovis, CA</p>
+        </div>
+
+        <div class="clipper-stage mt-1">
+          <h1 class="shave-title text-[clamp(3.75rem,11vw,6.75rem)] drop-shadow-[0_6px_0_rgba(18,12,8,0.85)] text-balance">
+            Prolific Cuts
+          </h1>
+
+          <!-- Solid white block that gets shaved away from left to right -->
+          <div class="shave-block" aria-hidden="true">
+            <span class="shave-block-inner"></span>
+          </div>
+
+          <!-- Animated Clipart of Barbershop Clippers swiping left to right -->
+          <div class="hero-clipper-track" aria-hidden="true">
+            <div class="hero-clipper">
+              <svg
+                class="hero-clipper-svg"
+                viewBox="0 0 220 140"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g class="hero-clipper-vib">
+                  <!-- Hanging hook ring at tail -->
+                  <path
+                    d="M28 60 C10 60, 10 86, 28 86"
+                    stroke="#1c130e"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M28 60 C10 60, 10 86, 28 86"
+                    stroke="#d8a648"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Tail cap -->
+                  <rect
+                    x="26"
+                    y="50"
+                    width="16"
+                    height="46"
+                    rx="5"
+                    fill="#2b1d16"
+                    stroke="#140d09"
+                    stroke-width="3"
+                  />
+
+                  <!-- Main ergonomic clipper housing (burgundy/crimson + espresso shadow) -->
+                  <path
+                    d="M38 42 C68 34, 124 34, 156 40 L166 46 L166 100 L156 106 C124 112, 68 112, 38 104 Z"
+                    fill="#8f241e"
+                    stroke="#140d09"
+                    stroke-width="3.5"
+                    stroke-linejoin="round"
+                  />
+                  <!-- Lower body shading -->
+                  <path
+                    d="M40 82 C72 86, 124 86, 163 82 L163 100 L156 104 C124 110, 68 110, 40 102 Z"
+                    fill="#631612"
+                  />
+
+                  <!-- Antique brass top housing faceplate -->
+                  <path
+                    d="M52 52 C80 48, 122 48, 150 53 L150 76 C122 79, 80 79, 52 75 Z"
+                    fill="#dfb15b"
+                    stroke="#140d09"
+                    stroke-width="2.75"
+                    stroke-linejoin="round"
+                  />
+                  <!-- Inner faceplate highlight & grip lines -->
+                  <line x1="64" y1="58" x2="64" y2="70" stroke="#2b1d16" stroke-width="2.5" stroke-linecap="round" />
+                  <line x1="72" y1="58" x2="72" y2="70" stroke="#2b1d16" stroke-width="2.5" stroke-linecap="round" />
+                  <line x1="80" y1="58" x2="80" y2="70" stroke="#2b1d16" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="136" cy="64" r="4.5" fill="#2b1d16" />
+                  <line x1="133" y1="64" x2="139" y2="64" stroke="#dfb15b" stroke-width="1.5" />
+
+                  <!-- Side ON/OFF toggle switch -->
+                  <rect
+                    x="88"
+                    y="28"
+                    width="22"
+                    height="11"
+                    rx="3"
+                    fill="#e6e1d6"
+                    stroke="#140d09"
+                    stroke-width="2.75"
+                  />
+
+                  <!-- Gold taper thumb lever -->
+                  <g class="clipper-lever">
+                    <path
+                      d="M148 42 L134 16 C132 12, 138 8, 143 11 L160 36 Z"
+                      fill="#dfb15b"
+                      stroke="#140d09"
+                      stroke-width="2.75"
+                      stroke-linejoin="round"
+                    />
+                    <circle cx="152" cy="42" r="5" fill="#f7f2e7" stroke="#140d09" stroke-width="2.5" />
+                  </g>
+
+                  <!-- Stationary chrome fade blade -->
+                  <path
+                    d="M164 42 L186 30 L186 116 L164 104 Z"
+                    fill="#d8d5ce"
+                    stroke="#140d09"
+                    stroke-width="3.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M167 46 L183 36 L183 72 L167 72 Z"
+                    fill="#f7f4ed"
+                  />
+
+                  <!-- Rapidly oscillating toothed cutter blade -->
+                  <g class="hero-cutter-blade">
+                    <path
+                      d="M186 26 L198 26 L198 31 L191 34 L198 37 L198 42 L191 45 L198 48 L198 53 L191 56 L198 59 L198 64 L191 67 L198 70 L198 75 L191 78 L198 81 L198 86 L191 89 L198 92 L198 97 L191 100 L198 103 L198 108 L191 111 L198 114 L198 120 L186 120 Z"
+                      fill="#fffdf9"
+                      stroke="#140d09"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+
+                  <!-- Buzz vibration lines & flying hair/block trimmings -->
+                  <g class="hero-cut-sparks">
+                    <line x1="204" y1="30" x2="214" y2="22" stroke="#fffdf9" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="206" y1="52" x2="217" y2="47" stroke="#dfb15b" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="206" y1="74" x2="218" y2="74" stroke="#fffdf9" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="206" y1="95" x2="217" y2="101" stroke="#dfb15b" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="204" y1="115" x2="214" y2="123" stroke="#fffdf9" stroke-width="2.5" stroke-linecap="round" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
         <p class="cut cut-2 mx-auto mt-6 max-w-xl text-lg text-balance sm:text-xl">
           Your neighborhood barbershop on Shaw Ave. Good people, good conversation, and an amazing cut.
         </p>
-        <div class="cut cut-3 mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div class="cut cut-3 mt-10 flex flex-wrap items-center justify-center gap-4">
           <a class="btn btn-fill" href="#book">Book a chair</a>
           <a class="btn btn-line" href="#services">See services</a>
+        </div>
+        <div class="cut cut-3">
+          <div class="hero-ledger">
+            <span class="hero-ledger-item">★ {shop.booksyRating} on Booksy</span>
+            <span class="hero-ledger-item">9 Local Barbers</span>
+            <span class="hero-ledger-item">Walk-Ins &amp; Kids Welcome</span>
+          </div>
         </div>
       </div>
       <button
         id="hero-pause"
-        class="btn btn-line scrim-solid absolute right-4 bottom-4 z-10 min-h-10 px-3 text-base"
+        class="scrim-solid absolute right-3 bottom-4 z-10 border border-foreground/40 px-2.5 py-1 font-display text-xs tracking-wider uppercase text-foreground/85 transition-colors hover:border-primary hover:text-primary"
         type="button"
         aria-pressed="false"
       >
@@ -53,55 +201,78 @@ const description =
     </section>
 
     <section id="shop" class="band-cream scroll-mt-24" aria-labelledby="shop-heading">
-      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-24 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+      <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 py-24 md:grid-cols-[0.95fr_1.05fr] md:items-start">
         <div>
+          <p class="section-index">01 / Shaw Ave, Clovis</p>
           <h2 id="shop-heading" class="text-5xl text-balance sm:text-6xl">The shop on Shaw</h2>
-          <Tool tool="brush" />
+          <Tool tool="brush" label="Pull up a chair" />
+          <div class="shop-perks">
+            <div class="shop-perk">
+              <span class="shop-perk-title">★ 5.0 Rating</span>
+              <span class="text-sm opacity-85">120 reviews on the shop Booksy</span>
+            </div>
+            <div class="shop-perk">
+              <span class="shop-perk-title">Every Chair Open</span>
+              <span class="text-sm opacity-85">Kids, first cuts &amp; walk-ins welcome</span>
+            </div>
+          </div>
         </div>
-        <div class="max-w-prose space-y-4 text-lg">
-          <p class="text-xl">
+        <div class="shop-note-card max-w-prose space-y-4 text-lg">
+          <p class="text-xl font-medium">
             Pull up a chair, hang out with good people, and get a cut you feel great about. Nobody’s
             rushing you out the door—just local barbers who take their time and know their regulars
             by name.
           </p>
           <p>
-            Find us at <a class="underline underline-offset-4" href={shop.maps}>{shop.address}, {shop.locality}</a>.
-            Walk-ins are always welcome, or <a class="underline underline-offset-4" href="#book">book a chair</a> with
+            Find us at <a class="draw font-medium underline underline-offset-4" href={shop.maps}>{shop.address}, {shop.locality}</a>.
+            Walk-ins are always welcome, or <a class="draw font-medium underline underline-offset-4" href="#book">book a chair</a> with
             your go-to barber.
           </p>
           <p>
             Everyone’s welcome here, including kids and first haircuts. The shop is wheelchair
-            accessible, and our neighbors have us at <a class="underline underline-offset-4" href={shop.booksy}>{shop.booksyRating} on Booksy</a>.
+            accessible, and our neighbors have us at <a class="draw font-medium underline underline-offset-4" href={shop.booksy}>{shop.booksyRating} on Booksy</a>.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="chair" class="scroll-mt-24" aria-labelledby="chair-heading">
+    <Pole />
+
+    <section id="chair" class="band-dark scroll-mt-24" aria-labelledby="chair-heading">
       <div class="mx-auto w-full max-w-6xl px-4 py-24">
         <div class="flex flex-wrap items-end justify-between gap-6">
-          <div class="max-w-2xl space-y-4">
+          <div class="max-w-2xl space-y-2">
+            <p class="section-index">02 / Shop Wall</p>
             <h2 id="chair-heading" class="text-5xl text-balance sm:text-6xl">From the chair</h2>
-            <Tool tool="clippers" />
-            <p class="max-w-prose text-lg">
+            <Tool tool="clippers" label="Real cuts, real regulars" />
+            <p class="pt-2 max-w-prose text-lg">
               Fresh cuts and familiar faces from our
-              <a class="underline underline-offset-4" href={instagram.href}>Instagram</a>.
+              <a class="draw underline underline-offset-4" href={instagram.href}>Instagram</a>.
             </p>
           </div>
-          <a class="btn btn-line" href={instagram.href}>Instagram</a>
+          <a class="btn btn-line" href={instagram.href}>{instagram.handle}</a>
         </div>
         <ul class="ig-board">
           {
             instagram.posts.map((post) => (
               <li>
                 <a class="ig-tile" href={post.href}>
-                  <img
-                    src={post.src}
-                    alt={post.alt}
-                    width="640"
-                    height="640"
-                    style={`object-position: ${post.position}`}
-                  />
+                  <div class="ig-frame">
+                    <img
+                      src={post.src}
+                      alt={post.alt}
+                      width="640"
+                      height="640"
+                      style={`object-position: ${post.position}`}
+                    />
+                  </div>
+                  <div class="ig-footer" aria-hidden="true">
+                    <span class="ig-tag">
+                      <span class="ig-tag-bar" />
+                      {post.tag}
+                    </span>
+                    <span class="ig-arrow">IG ↗</span>
+                  </div>
                 </a>
               </li>
             ))
@@ -110,29 +281,45 @@ const description =
       </div>
     </section>
 
+    <Pole />
+
     <section id="services" class="band-cream scroll-mt-24" aria-labelledby="services-heading">
       <div class="mx-auto w-full max-w-6xl px-4 py-24">
         <div class="flex flex-wrap items-start justify-between gap-6">
-          <div class="max-w-3xl space-y-4">
+          <div class="max-w-3xl space-y-2">
+            <p class="section-index">03 / The Menu</p>
             <h2 id="services-heading" class="text-5xl text-balance sm:text-6xl">Services</h2>
-            <Tool tool="scissors" />
-            <p class="max-w-prose text-lg">
+            <Tool tool="scissors" label="Timed appointments" />
+            <p class="pt-2 max-w-prose text-lg">
               No rush, no guesswork. Every service blocks out real time in the chair. Book with any
-              barber on Square, or <a class="underline underline-offset-4" href="/services">see the full menu</a>.
+              barber on Square, or <a class="draw font-medium underline underline-offset-4" href="/services">see the full menu</a>.
             </p>
           </div>
-          <a class="btn btn-line" href={shop.squareAppointments}>Book on Square</a>
+          <a class="btn btn-fill" href={shop.squareAppointments}>Book on Square</a>
         </div>
-        <ul class="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="service-grid">
           {
-            squareMenu.map((service) => (
-              <li class="service-cell flex flex-col gap-4 bg-background p-6">
-                <h3 class="text-3xl">{service.name}</h3>
-                {service.detail && <p class="text-muted-foreground">{service.detail}</p>}
-                <p class="mt-auto flex items-baseline justify-between gap-3 text-lg">
-                  <span>{service.time}</span>
-                  <span>{service.price}</span>
-                </p>
+            squareMenu.map((service, idx) => (
+              <li class="service-cell">
+                <div class="service-ticket-head">
+                  <span class="service-num">No. 0{idx + 1}</span>
+                  <span class="time-stamp">{service.time}</span>
+                </div>
+                <h3 class="text-3xl">
+                  <a class="draw" href={service.href}>
+                    {service.name}
+                  </a>
+                </h3>
+                {service.detail && <p class="text-base opacity-85">{service.detail}</p>}
+                <div class="service-ticket-foot">
+                  <span class="price-badge">{service.price}</span>
+                  <a
+                    class="draw font-display text-sm tracking-wider uppercase"
+                    href={service.href}
+                  >
+                    Book ticket ↗
+                  </a>
+                </div>
               </li>
             ))
           }
@@ -141,13 +328,15 @@ const description =
     </section>
 
     <Pole />
+
     <section id="book" class="band-cream scroll-mt-24" aria-labelledby="book-heading">
       <div class="mx-auto w-full max-w-6xl px-4 py-24">
         <div class="flex flex-wrap items-end justify-between gap-6">
-          <div class="max-w-2xl space-y-4">
+          <div class="max-w-2xl space-y-2">
+            <p class="section-index">04 / The Roster</p>
             <h2 id="book-heading" class="text-5xl text-balance sm:text-6xl">Book a chair</h2>
-            <Tool tool="comb" />
-            <p class="text-lg">
+            <Tool tool="comb" label="One shop, nine chairs" />
+            <p class="pt-2 text-lg">
               Nine local barbers, each running their own chair. Book anyone on Square—Diego, Roger,
               and Nic are also on Booksy. Walk on in if a chair is open, or give us a call.
             </p>
@@ -156,27 +345,35 @@ const description =
         </div>
         <ul class="barber-board">
           {
-            barbers.map((barber) => (
+            barbers.map((barber, idx) => (
               <li class="barber-card">
-                <div class="barber-photo">
-                  <img
-                    src={barber.photo}
-                    alt=""
-                    width="176"
-                    height="235"
-                    class="block h-full w-full object-cover"
-                  />
-                  <Pole class="absolute inset-x-0 bottom-0" />
-                </div>
-                <h3 class="barber-name">
-                  <a class="draw" href={`/barbers/${barber.slug}`}>
-                    {barber.name}
+                <div class="barber-card-top">
+                  <a href={`/barbers/${barber.slug}`} class="barber-photo" tabindex="-1" aria-hidden="true">
+                    <img
+                      src={barber.photo}
+                      alt=""
+                      width="176"
+                      height="235"
+                      class="block h-full w-full object-cover"
+                    />
+                    <Pole class="absolute inset-x-0 bottom-0" />
                   </a>
-                </h3>
-                <div class="barber-meta">
-                  {barber.bookingName && <p>Also on Booksy as {barber.bookingName}</p>}
-                  {barber.rating && <p>{barber.rating}</p>}
-                  {barber.gap && <p>{barber.gap}</p>}
+                  <div class="barber-info">
+                    <span class="chair-tag">
+                      Chair 0{idx + 1}
+                      {barber.slug === "peda-thik" ? " • Owner" : ""}
+                    </span>
+                    <h3 class="barber-name">
+                      <a class="draw" href={`/barbers/${barber.slug}`}>
+                        {barber.name}
+                      </a>
+                    </h3>
+                    <div class="barber-meta">
+                      {barber.bookingName && <p>Also on Booksy as <strong class="font-medium">{barber.bookingName}</strong></p>}
+                      {barber.rating && <span class="rating-chip">★ {barber.rating}</span>}
+                      {barber.gap && <p class="opacity-80">{barber.gap}</p>}
+                    </div>
+                  </div>
                 </div>
                 <div class="barber-actions">
                   <a class="btn btn-fill" href={barber.square}>Book on Square</a>
@@ -191,33 +388,46 @@ const description =
       </div>
     </section>
 
-    <section id="visit" class="scroll-mt-24" aria-labelledby="visit-heading">
-      <div class="mx-auto grid w-full max-w-6xl gap-12 px-4 py-24 md:grid-cols-2">
+    <Pole />
+
+    <section id="visit" class="band-dark scroll-mt-24" aria-labelledby="visit-heading">
+      <div class="mx-auto grid w-full max-w-6xl gap-12 px-4 py-24 md:grid-cols-2 md:items-center">
         <div class="space-y-4">
+          <p class="section-index">05 / Hours &amp; Location</p>
           <h2 id="visit-heading" class="text-5xl text-balance sm:text-6xl">Visit</h2>
-          <Tool tool="brush" />
-          <p class="text-xl">
-            <a class="underline underline-offset-4" href={shop.maps}>
+          <Tool tool="brush" label="Walk-ins welcome" />
+          <p class="pt-2 text-2xl font-medium">
+            <a class="draw underline underline-offset-4" href={shop.maps}>
               {shop.address}<br />{shop.locality}
             </a>
           </p>
-          <p class="max-w-prose">
-            Swing by during shop hours for a walk-in, or <a class="underline underline-offset-4" href="#book">book ahead</a> to
+          <p class="max-w-prose text-lg">
+            Swing by during shop hours for a walk-in, or <a class="draw underline underline-offset-4" href="#book">book ahead</a> to
             lock in your favorite barber. Give us a ring at
-            <a class="underline underline-offset-4" href={shop.phoneHref}>{shop.phone}</a>
+            <a class="draw underline underline-offset-4" href={shop.phoneHref}>{shop.phone}</a>
             if you’re coming right when we open.
           </p>
+          <div class="pt-3 flex flex-wrap gap-3">
+            <a class="btn btn-fill" href={shop.maps}>Get directions</a>
+            <a class="btn btn-line" href={shop.phoneHref}>Call {shop.phone}</a>
+          </div>
         </div>
-        <dl class="divide-border border-y border-border divide-y">
-          {
-            shop.hours.map(([day, time]) => (
-              <div class="flex items-baseline justify-between gap-4 py-4 text-lg">
-                <dt>{day}</dt>
-                <dd>{time}</dd>
-              </div>
-            ))
-          }
-        </dl>
+        <div class="hours-board">
+          <div class="hours-board-header">
+            <span class="font-display text-2xl tracking-wide uppercase text-primary">Shop Hours</span>
+            <span class="time-stamp">Open 7 Days</span>
+          </div>
+          <dl class="divide-border/60 divide-y">
+            {
+              shop.hours.map(([day, time]) => (
+                <div class="flex items-baseline justify-between gap-4 py-4 text-lg">
+                  <dt class="font-display tracking-wide uppercase">{day}</dt>
+                  <dd class="font-medium text-primary">{time}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
       </div>
     </section>
   </main>
