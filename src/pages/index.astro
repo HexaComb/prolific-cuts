@@ -11,7 +11,7 @@ const description =
   "Prolific Cuts is a barbershop at 493 W Shaw Ave in Clovis. Haircuts, beard work, and kids’ cuts, each with a time. Book a chair on Square. Diego, Roger, and Nic are also on Booksy.";
 ---
 
-<Base title="Prolific Cuts | Barbershop in Clovis" description={description}>
+<Base title="Prolific Cuts | Your barbers in Clovis" description={description}>
   <Header />
   <main id="content">
     <section
@@ -30,7 +30,7 @@ const description =
       >
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
-      <div class="absolute inset-0 bg-black/65"></div>
+      <div class="scrim absolute inset-0"></div>
       <div class="relative z-10 mx-auto w-full max-w-4xl px-4 py-20 text-center">
         <h1 class="cut text-[clamp(3.5rem,10vw,6rem)] text-balance">Prolific Cuts</h1>
         <p class="cut cut-2 mx-auto mt-6 max-w-2xl text-lg text-balance sm:text-xl">
@@ -44,7 +44,7 @@ const description =
       </div>
       <button
         id="hero-pause"
-        class="btn btn-line absolute right-4 bottom-4 z-10 min-h-10 bg-black/70 px-3 text-base"
+        class="btn btn-line scrim-solid absolute right-4 bottom-4 z-10 min-h-10 px-3 text-base"
         type="button"
         aria-pressed="false"
       >
@@ -204,7 +204,7 @@ const description =
             They may not be in the whole time the shop is open.
           </p>
         </div>
-        <dl class="divide-y divide-white/15 border-y border-white/15">
+        <dl class="divide-border border-y border-border divide-y">
           {
             shop.hours.map(([day, time]) => (
               <div class="flex items-baseline justify-between gap-4 py-4 text-lg">

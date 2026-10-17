@@ -13,7 +13,7 @@ Audience: someone in or near Clovis deciding on a haircut, a time, and which bar
 
 Action: leave for that barber’s Booksy. The on-site pages exist so the choice is informed.
 
-Direction: Beard X layout, chosen by the client. Near-black field, cream bands, Oswald caps, sand book button, centered hero on the shop video. No cart, shop, or invented portraits.
+Direction: Beard X layout, chosen by the client. Espresso field, ivory bands, Oswald caps, antique-brass book button, centered hero on the shop video. No cart, shop, or invented portraits.
 
 The hero background is the shop’s own video, `public/video/hero.mp4`, with `public/video/hero-poster.jpg` as the still. It is a daylight storefront. A left-weighted scrim keeps the name and button readable without burying the sign.
 
