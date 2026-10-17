@@ -4,7 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { barbers, getBarber, shop, squareServicesFor } from "../../data/shop";
 import Pole from "../../components/Pole.astro";
-import Clipper from "../../components/Clipper.astro";
+import Tool from "../../components/Tool.astro";
 
 export function getStaticPaths() {
   return barbers.map((barber) => ({ params: { slug: barber.slug } }));
@@ -42,7 +42,7 @@ const description = barber.booksy
           <a class="underline underline-offset-4" href="/">Prolific Cuts</a>
         </p>
         <h1 class="cut mt-4 text-5xl text-balance sm:text-6xl">{barber.name}</h1>
-        <Clipper />
+        <Tool tool="clippers" />
         {barber.bookingName && <p class="mt-4 text-xl">Also on Booksy as {barber.bookingName}</p>}
         {barber.rating && <p class="mt-2">{barber.rating}</p>}
         {barber.bio && <p class="mt-4 max-w-prose text-lg">{barber.bio}</p>}
@@ -68,7 +68,8 @@ const description = barber.booksy
       <section aria-labelledby="square-heading">
         <h2 id="square-heading" class="text-4xl">Square</h2>
         <p class="mt-4 max-w-prose">
-          Starting prices on the shop’s Square list. {barber.shortName} is assigned to these.
+          Pull up a chair with {barber.shortName} on Square. Each service below shows the time
+          blocked out for your appointment and the starting price.
         </p>
         <div class="mt-6 overflow-x-auto">
           <table class="w-full min-w-[32rem] text-left">

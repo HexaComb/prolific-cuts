@@ -4,11 +4,11 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ServiceMenu from "../components/ServiceMenu.astro";
 import Pole from "../components/Pole.astro";
-import Clipper from "../components/Clipper.astro";
+import Tool from "../components/Tool.astro";
 import { shop, squareMenu } from "../data/shop";
 
 const description =
-  "Services at Prolific Cuts in Clovis: haircuts, beard work, kids’ cuts, hot towel, and color, with the time and the barber who books each one.";
+  "Haircuts, beard work, kids’ cuts, hot towel shaves, and color at Prolific Cuts in Clovis. Real time in the chair with your neighborhood barbers—see times, prices, and booking links.";
 ---
 
 <Base title="Services | Prolific Cuts, Clovis" description={description}>
@@ -16,10 +16,10 @@ const description =
   <main id="content" class="band-cream">
     <header class="mx-auto w-full max-w-6xl px-4 pt-16 pb-10">
       <h1 class="cut text-5xl text-balance sm:text-6xl">Services</h1>
-      <Clipper />
+      <Tool tool="scissors" />
       <p class="mt-6 max-w-prose text-lg">
-        One shop at {shop.address}. Nine barbers book on Square. Diego, Roger, and Nic also keep a
-        Booksy menu, with that barber’s own times and prices.
+        Real time in the chair with the barber you trust. All nine of our barbers book core services
+        on Square, and Diego, Roger, and Nic also keep their full menus on Booksy.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a class="btn btn-fill" href="/#book">Book a chair</a>
@@ -31,7 +31,7 @@ const description =
       <section aria-labelledby="square-menu">
         <h2 id="square-menu" class="text-4xl sm:text-5xl">Square</h2>
         <p class="mt-4 max-w-prose text-lg">
-          Starting prices on the shop’s Square list. Book whichever chair you want.
+          Core shop services, available across our crew. Pick a service to choose your barber.
         </p>
         <div class="mt-6 overflow-x-auto">
           <table class="w-full min-w-[28rem] text-left">
@@ -63,8 +63,8 @@ const description =
       <section aria-labelledby="booksy-menu">
         <h2 id="booksy-menu" class="text-4xl sm:text-5xl">Booksy</h2>
         <p class="mt-4 max-w-prose text-lg">
-          Diego, Roger, and Nic publish their own menus on Booksy. A struck price is the list. The
-          other figure is what Booksy is showing now.
+          Diego, Roger, and Nic also keep extended menus on Booksy. Crossed-out prices show the
+          regular list price alongside the current Booksy rate.
         </p>
         <div class="mt-8">
           <ServiceMenu />

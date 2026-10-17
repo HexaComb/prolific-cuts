@@ -404,7 +404,7 @@ export const catalog: { id: string; title: string; lede: string; items: CatalogR
   {
     id: "haircuts",
     title: "Haircuts",
-    lede: "A named chair, a set time, and the cut you asked for. Fades and tapers, a one-length cut, or a gentleman’s cut with no skin fade.",
+    lede: "Fades, tapers, one-length trims, or a classic gentleman’s cut—with a barber who takes the time to get it right.",
     items: [
       { slug: "diego-gonzalez", service: "Detailed haircut" },
       { slug: "diego-gonzalez", service: "Simple haircut" },
@@ -416,7 +416,7 @@ export const catalog: { id: string; title: string; lede: string; items: CatalogR
   {
     id: "haircut-beard",
     title: "Haircut and beard",
-    lede: "The cut plus beard work. Plan on an hour.",
+    lede: "The full cleanup. A solid hour for your haircut, beard trim, and razor line-up.",
     items: [
       { slug: "diego-gonzalez", service: "Haircut and beard" },
       { slug: "roger-bandz", service: "Haircut and beard" },
@@ -426,7 +426,7 @@ export const catalog: { id: string; title: string; lede: string; items: CatalogR
   {
     id: "kids",
     title: "Kids",
-    lede: "Roger and Nic list a kids’ cut. The shop’s reviews talk about patience with first haircuts and toddlers.",
+    lede: "From a toddler’s first haircut to a fresh fade for school—patient, easygoing barbers who make kids feel at home.",
     items: [
       { slug: "roger-bandz", service: "Kid’s haircut" },
       { slug: "nic", service: "Kids’ haircut" },
@@ -435,7 +435,7 @@ export const catalog: { id: string; title: string; lede: string; items: CatalogR
   {
     id: "beard",
     title: "Beard, brows, and design",
-    lede: "A beard on its own is twenty to thirty minutes. Brows and a design are shorter.",
+    lede: "Quick clean-ups between cuts: twenty to thirty minutes for beard work, sharp brows, or a custom design.",
     items: [
       { slug: "diego-gonzalez", service: "Beard trim and work" },
       { slug: "roger-bandz", service: "Beard" },
@@ -448,7 +448,7 @@ export const catalog: { id: string; title: string; lede: string; items: CatalogR
   {
     id: "chair",
     title: "The longer chair",
-    lede: "A wash, a mask, a hot towel, or the full chair. A wash is ten minutes. Three cuts are three hours.",
+    lede: "Kick back with a hot towel shave, black mask, or hair wash—or bring a friend with Diego’s two- and three-haircut deals.",
     items: [
       { slug: "diego-gonzalez", service: "Haircut and black mask" },
       { slug: "diego-gonzalez", service: "Haircut, beard, and black mask" },
@@ -467,7 +467,7 @@ export const catalog: { id: string; title: string; lede: string; items: CatalogR
   {
     id: "color",
     title: "Color and perm",
-    lede: "Roger books color and perms. These are the long appointments.",
+    lede: "Looking for a bigger change? Roger books three- to four-hour sessions for perms, bleaching, and color.",
     items: [
       { slug: "roger-bandz", service: "Perm" },
       { slug: "roger-bandz", service: "Blonde or color" },

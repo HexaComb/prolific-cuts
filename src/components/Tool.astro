@@ -1,0 +1,54 @@
+---
+interface Props {
+  tool?: "scissors" | "clippers" | "brush" | "comb";
+}
+
+const { tool = "scissors" } = Astro.props;
+---
+
+<svg class:list={["tool", `tool-${tool}`]} viewBox="0 0 72 40" fill="none" aria-hidden="true">
+  {
+    tool === "scissors" && (
+      <>
+        <circle cx="13" cy="11" r="6.25" />
+        <circle cx="13" cy="29" r="6.25" />
+        <path d="M18.2 14.2 66 33" />
+        <path d="M18.2 25.8 66 7" />
+        <circle cx="31.6" cy="20" r="2.15" fill="currentColor" stroke="none" />
+      </>
+    )
+  }
+  {
+    tool === "clippers" && (
+      <>
+        <path d="M4 15h20v14H4z" />
+        <path d="M8 29v6M14 29v6M20 29v6" />
+        <path d="M24 13h34c6 0 10 3.2 10 7s-4 7-10 7H24" />
+        <path d="M24 13v14" />
+        <path d="M36 13V6h12" />
+        <circle cx="40" cy="20" r="2" fill="currentColor" stroke="none" />
+      </>
+    )
+  }
+  {
+    tool === "brush" && (
+      <>
+        <path d="M3 20h24" />
+        <path d="M27 12h9v16h-9z" />
+        <path d="M36 13c10-.4 20-2 30-7" />
+        <path d="M36 17.5c12 0 22 .4 30 1" />
+        <path d="M36 22c11 .5 20 2 28 5" />
+        <path d="M36 26.5c9 .8 16 2.4 22 6" />
+      </>
+    )
+  }
+  {
+    tool === "comb" && (
+      <>
+        <path d="M18 10h48" />
+        <path d="M18 10C6 12 4 24 14 28" />
+        <path d="M24 10v16M32 10v20M40 10v16M48 10v20M56 10v16M64 10v20" />
+      </>
+    )
+  }
+</svg>

@@ -3,15 +3,15 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Pole from "../components/Pole.astro";
-import Clipper from "../components/Clipper.astro";
+import Tool from "../components/Tool.astro";
 import { barbers, shop, squareMenu } from "../data/shop";
 import { instagram } from "../data/instagram";
 
 const description =
-  "Prolific Cuts is a barbershop at 493 W Shaw Ave in Clovis. Haircuts, beard work, and kids’ cuts, each with a time. Book a chair on Square. Diego, Roger, and Nic are also on Booksy.";
+  "Prolific Cuts is your neighborhood barbershop at 493 W Shaw Ave in Clovis. Pull up a chair with good people for fresh fades, classic cuts, beard work, and kids’ haircuts.";
 ---
 
-<Base title="Prolific Cuts | Your barbers in Clovis" description={description}>
+<Base title="Prolific Cuts | Your Neighborhood Barbershop in Clovis" description={description}>
   <Header />
   <main id="content">
     <section
@@ -33,9 +33,8 @@ const description =
       <div class="scrim absolute inset-0"></div>
       <div class="relative z-10 mx-auto w-full max-w-4xl px-4 py-20 text-center">
         <h1 class="cut text-[clamp(3.5rem,10vw,6rem)] text-balance">Prolific Cuts</h1>
-        <p class="cut cut-2 mx-auto mt-6 max-w-2xl text-lg text-balance sm:text-xl">
-          Haircuts, beards, and kids’ cuts at {shop.address}, {shop.locality}. Every service has a
-          time. You book the chair that does it.
+        <p class="cut cut-2 mx-auto mt-6 max-w-xl text-lg text-balance sm:text-xl">
+          Your neighborhood barbershop on Shaw Ave. Good people, good conversation, and an amazing cut.
         </p>
         <div class="cut cut-3 mt-10 flex flex-wrap items-center justify-center gap-3">
           <a class="btn btn-fill" href="#book">Book a chair</a>
@@ -53,22 +52,27 @@ const description =
       <Pole class="absolute inset-x-0 bottom-0 z-10" />
     </section>
 
-    <section class="band-cream" aria-labelledby="shop-heading">
-      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-24 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+    <section id="shop" class="band-cream scroll-mt-24" aria-labelledby="shop-heading">
+      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-24 md:grid-cols-[0.9fr_1.1fr] md:items-start">
         <div>
           <h2 id="shop-heading" class="text-5xl text-balance sm:text-6xl">The shop on Shaw</h2>
-          <Clipper />
+          <Tool tool="brush" />
         </div>
         <div class="max-w-prose space-y-4 text-lg">
-          <p>
-            Prolific Cuts is at {shop.address}, {shop.locality}. The window says walk-ins are
-            welcome. If you want a particular barber, book that chair.
+          <p class="text-xl">
+            Pull up a chair, hang out with good people, and get a cut you feel great about. Nobody’s
+            rushing you out the door—just local barbers who take their time and know their regulars
+            by name.
           </p>
           <p>
-            The room takes children, including first haircuts. Listings describe a
-            wheelchair-accessible entrance, parking, and restroom.
+            Find us at <a class="underline underline-offset-4" href={shop.maps}>{shop.address}, {shop.locality}</a>.
+            Walk-ins are always welcome, or <a class="underline underline-offset-4" href="#book">book a chair</a> with
+            your go-to barber.
           </p>
-          <p>Booksy lists the shop at {shop.booksyRating}.</p>
+          <p>
+            Everyone’s welcome here, including kids and first haircuts. The shop is wheelchair
+            accessible, and our neighbors have us at <a class="underline underline-offset-4" href={shop.booksy}>{shop.booksyRating} on Booksy</a>.
+          </p>
         </div>
       </div>
     </section>
@@ -78,9 +82,9 @@ const description =
         <div class="flex flex-wrap items-end justify-between gap-6">
           <div class="max-w-2xl space-y-4">
             <h2 id="chair-heading" class="text-5xl text-balance sm:text-6xl">From the chair</h2>
-            <Clipper />
+            <Tool tool="clippers" />
             <p class="max-w-prose text-lg">
-              Photos from the shop’s
+              Fresh cuts and familiar faces from our
               <a class="underline underline-offset-4" href={instagram.href}>Instagram</a>.
             </p>
           </div>
@@ -108,14 +112,16 @@ const description =
 
     <section id="services" class="band-cream scroll-mt-24" aria-labelledby="services-heading">
       <div class="mx-auto w-full max-w-6xl px-4 py-24">
-        <div class="max-w-3xl space-y-4">
-          <h2 id="services-heading" class="text-5xl text-balance sm:text-6xl">Services</h2>
-          <Clipper />
-          <p class="max-w-prose text-lg">
-            Any chair can book these. The time is the appointment, and the price is where Square
-            starts.
-            <a class="underline underline-offset-4" href="/services">Open the full menu.</a>
-          </p>
+        <div class="flex flex-wrap items-start justify-between gap-6">
+          <div class="max-w-3xl space-y-4">
+            <h2 id="services-heading" class="text-5xl text-balance sm:text-6xl">Services</h2>
+            <Tool tool="scissors" />
+            <p class="max-w-prose text-lg">
+              No rush, no guesswork. Every service blocks out real time in the chair. Book with any
+              barber on Square, or <a class="underline underline-offset-4" href="/services">see the full menu</a>.
+            </p>
+          </div>
+          <a class="btn btn-line" href={shop.squareAppointments}>Book on Square</a>
         </div>
         <ul class="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
           {
@@ -127,7 +133,6 @@ const description =
                   <span>{service.time}</span>
                   <span>{service.price}</span>
                 </p>
-                <a class="btn btn-line" href={service.href}>Book on Square</a>
               </li>
             ))
           }
@@ -141,11 +146,10 @@ const description =
         <div class="flex flex-wrap items-end justify-between gap-6">
           <div class="max-w-2xl space-y-4">
             <h2 id="book-heading" class="text-5xl text-balance sm:text-6xl">Book a chair</h2>
-            <Clipper />
+            <Tool tool="comb" />
             <p class="text-lg">
-              Every chair books on Square. Diego, Roger, and Nic also keep a Booksy page, and both
-              links are on their cards. Walk in if the chair you need is open. Call the shop if you
-              are sorting a time.
+              Nine local barbers, each running their own chair. Book anyone on Square—Diego, Roger,
+              and Nic are also on Booksy. Walk on in if a chair is open, or give us a call.
             </p>
           </div>
           <a class="btn btn-line" href={shop.phoneHref}>{shop.phone}</a>
@@ -191,17 +195,17 @@ const description =
       <div class="mx-auto grid w-full max-w-6xl gap-12 px-4 py-24 md:grid-cols-2">
         <div class="space-y-4">
           <h2 id="visit-heading" class="text-5xl text-balance sm:text-6xl">Visit</h2>
-          <Clipper />
+          <Tool tool="brush" />
           <p class="text-xl">
             <a class="underline underline-offset-4" href={shop.maps}>
               {shop.address}<br />{shop.locality}
             </a>
           </p>
           <p class="max-w-prose">
-            Walk in during these hours. Call
+            Swing by during shop hours for a walk-in, or <a class="underline underline-offset-4" href="#book">book ahead</a> to
+            lock in your favorite barber. Give us a ring at
             <a class="underline underline-offset-4" href={shop.phoneHref}>{shop.phone}</a>
-            if you are coming right when we open. If you want a particular barber, book that chair.
-            They may not be in the whole time the shop is open.
+            if you’re coming right when we open.
           </p>
         </div>
         <dl class="divide-border border-y border-border divide-y">
@@ -222,21 +226,16 @@ const description =
 
 <script>
   const bindHero = () => {
-  const video = document.querySelector<HTMLVideoElement>("#hero-video");
-  const button = document.querySelector<HTMLButtonElement>("#hero-pause");
-  if (!video || !button || video.dataset.bound) return;
-  video.dataset.bound = "true";
-  {
+    const video = document.querySelector<HTMLVideoElement>("#hero-video");
+    const button = document.querySelector<HTMLButtonElement>("#hero-pause");
+    if (!video || !button || video.dataset.bound) return;
+    video.dataset.bound = "true";
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const rate = 0.45;
 
     const setPaused = (paused: boolean) => {
       button.setAttribute("aria-pressed", String(paused));
       button.textContent = paused ? "Play video" : "Pause video";
-    };
-
-    const slow = () => {
-      video.playbackRate = rate;
     };
 
     const stop = () => {
@@ -245,15 +244,10 @@ const description =
       setPaused(true);
     };
 
-    video.addEventListener("loadedmetadata", slow);
-    video.addEventListener("play", slow);
-    slow();
-
     if (reduced.matches) stop();
 
     button.addEventListener("click", () => {
       if (video.paused) {
-        slow();
         void video.play();
         setPaused(false);
       } else {
@@ -265,7 +259,6 @@ const description =
     reduced.addEventListener("change", () => {
       if (reduced.matches) stop();
     });
-  }
   };
 
   bindHero();
