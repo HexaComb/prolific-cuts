@@ -373,6 +373,15 @@ header .btn-fill:hover {
   padding: 0.2rem 1rem;
 }
 
+a.hero-ledger-item {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.hero-ledger-item:hover {
+  color: var(--primary);
+}
+
 .hero-ledger-item + .hero-ledger-item {
   border-left: 1px solid oklch(0.8 0.118 84 / 0.45);
 }
@@ -529,6 +538,8 @@ header .btn-fill:hover {
   background: var(--cream-paper);
   border: 2px solid var(--espresso-ink);
   box-shadow: 3px 3px 0 var(--espresso-ink);
+  color: inherit;
+  text-decoration: none;
   transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -908,26 +919,6 @@ header .btn-fill:hover {
   margin: 0;
   font-size: 1.65rem;
   line-height: 1.1;
-}
-
-.barber-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.92rem;
-  line-height: 1.35;
-}
-
-.rating-chip {
-  display: inline-flex;
-  align-self: flex-start;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  background: oklch(0.8 0.118 84 / 0.32);
-  border: 1px solid var(--espresso-ink);
 }
 
 .barber-actions {
