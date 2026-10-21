@@ -3,3 +3,8 @@ compatibility_date = "2026-10-16"
 
 [assets]
 directory = "./dist"
+
+# Required for `npx wrangler preview` on non-production branches.
+# Production still uses top-level name, compatibility_date, and assets.
+[previews]
+

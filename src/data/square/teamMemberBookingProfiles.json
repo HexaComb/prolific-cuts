@@ -1,0 +1,68 @@
+{
+  "source": "Static snapshot of Square booking staff profiles, taken from the public booking page JSON on 20 October 2026. Replace this file later with a build-time ListTeamMemberBookingProfiles response from Square's Bookings API — the shape matches TeamMemberBookingProfile.",
+  "team_member_booking_profiles": [
+    {
+      "team_member_id": "qp7n4f35o9peok",
+      "description": "Hello my name is Abel and I enjoy being a barber very much. I have a wide range of clientele from different ages and backgrounds so don't be afraid to be yourself. I have 15+ years of cutting hair experience to help me excel on everyones needs.",
+      "display_name": "Abel Zamora",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/df5cf4c1b7c3d5e995ec5b236bbb9f8e/original.jpg"
+    },
+    {
+      "team_member_id": "jha41c8j1vomw8",
+      "description": null,
+      "display_name": "Baba Vang",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/8d04b57c55ba75f48e6e57e61b028c4f/original.jpg"
+    },
+    {
+      "team_member_id": "b7osilh2mx8t94",
+      "description": "Whats up, this is Devin and I am a young entrepreneur barber. I've been cutting hair for about 6+ years now. I love barbering and my clients are the best. I'll make sure you feel great about your self when leaving my chair!!",
+      "display_name": "Devin Yang",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/c9b2ec46526d35e7e57ddd6fb8c2517c/original.jpg"
+    },
+    {
+      "team_member_id": "urj2w30eu5y5hf",
+      "description": "Hello my name is Diego Gonzalez, I'm 27 years old and I have been professionally cutting hair for 6 years now and enjoying the journey everyday! Love to hangout with family, work on cars, and play video games when I'm not cutting hair. I look forward to you all choosing me as your barber. Thank you.",
+      "display_name": "Diego Gonzalez",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/cdd2114e8ab185b19444ec0f3cc3f283/original.jpg"
+    },
+    {
+      "team_member_id": "q6iq1vqydsnh3i",
+      "description": "Hello my name is Nic, I've been cutting for 2 years and I'm all about giving you the best service. I'm always ready to meet new people and make every client leave with a smile.",
+      "display_name": "Nic Tabiolo",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/fb153ae4b1a6891973e4df43e156c1bb/original.jpg"
+    },
+    {
+      "team_member_id": "ju4ne94ja9cby3",
+      "description": "Hello my name is Peda. I'm the Owner of Prolific Cuts. I've been in the hair industry for 11 years. I take pride in my work and customer service as a professional with every client that sits in my chair. See you soon!",
+      "display_name": "Pera Thik",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/14e02ccc8d5a0177f19002e4caa9416f/original.jpg"
+    },
+    {
+      "team_member_id": "fwow3m4x84v0av",
+      "description": "hello my name is Roger when you choose me as your barber you can expect a friendly and welcoming atmosphere if you're looking for a classic haircut, a trendy style, or complete transformation I'm here to fulfill your desire and needs!",
+      "display_name": "Roger Saldivar",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/7e1e590e73203c6c7b7e71ab9591c563/original.jpg"
+    },
+    {
+      "team_member_id": "5wnjvpjybeyc2r",
+      "description": "Hey I'm Ryan, a passionate barber dedicated to helping people look and feel their best. With deep love and respect for the craft my chair isn't just a place to get a haircut its a space where confidence is built. Whether you are looking for a fresh fade, a beard shape up, or just a place to talk shop i've got you. Book your appointment and lets get you looking sharp.",
+      "display_name": "Ryan Sanchez",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/bf7d2e0f602f38d7cbb0ccf2a8f086a0/original.jpg"
+    },
+    {
+      "team_member_id": "qxvkirxf8dlfli",
+      "description": "My name is Tyler I've been barbering for 3 years. I look to giving great customer service and quality haircuts to everyone.",
+      "display_name": "Tyler Ou",
+      "is_bookable": true,
+      "profile_image_url": "https://appointments-production-f.squarecdn.com/files/047cd2efc65fc3092dff5d6db67c0a49/original.jpeg"
+    }
+  ]
+}

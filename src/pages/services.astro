@@ -2,13 +2,12 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import ServiceMenu from "../components/ServiceMenu.astro";
 import Pole from "../components/Pole.astro";
 import Tool from "../components/Tool.astro";
 import { shop, squareMenu } from "../data/shop";
 
 const description =
-  "Haircuts, beard work, kids’ cuts, hot towel shaves, and color at Prolific Cuts in Clovis. Real time in the chair with your neighborhood barbers—see times, prices, and booking links.";
+  "Haircuts, beard work, kids’ cuts, and hot towel shaves at Prolific Cuts in Clovis. Real time in the chair with your neighborhood barbers—see times, prices, and Square booking links.";
 ---
 
 <Base title="Services | Prolific Cuts, Clovis" description={description}>
@@ -19,8 +18,8 @@ const description =
       <h1 class="cut text-5xl text-balance sm:text-6xl">Services</h1>
       <Tool tool="scissors" label="No rush, real time" />
       <p class="mt-6 max-w-prose text-lg">
-        Real time in the chair with the barber you trust. All nine of our barbers book core services
-        on Square, and Diego, Roger, and Nic also keep their full menus on Booksy.
+        Real time in the chair with the barber you trust. All nine of our barbers book on Square.
+        Pick a service to choose your chair, or book a barber from the roster.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a class="btn btn-fill" href="/#book">Book a chair</a>
@@ -29,15 +28,15 @@ const description =
     </header>
     <Pole />
     <div class="mx-auto w-full max-w-6xl space-y-16 px-4 pt-16 pb-20">
-      <section aria-labelledby="square-menu">
+      <section aria-labelledby="shop-menu">
         <p class="section-index">01 / All 9 Chairs</p>
-        <h2 id="square-menu" class="text-4xl sm:text-5xl">Square</h2>
+        <h2 id="shop-menu" class="text-4xl sm:text-5xl">The menu</h2>
         <p class="mt-4 max-w-prose text-lg">
-          Core shop services, available across our crew. Pick a service to choose your barber.
+          {shop.priceNote} Pick a service to choose your barber.
         </p>
         <div class="menu-sheet mt-6 overflow-x-auto">
           <table class="w-full min-w-[28rem] text-left">
-            <caption class="sr-only">Square services at Prolific Cuts</caption>
+            <caption class="sr-only">Services at Prolific Cuts</caption>
             <thead>
               <tr class="border-b-2 border-current/25 font-display text-sm tracking-wider uppercase">
                 <th class="py-3 pr-4 font-semibold" scope="col">Service</th>
@@ -64,17 +63,6 @@ const description =
               }
             </tbody>
           </table>
-        </div>
-      </section>
-      <section aria-labelledby="booksy-menu">
-        <p class="section-index">02 / Extended Menus</p>
-        <h2 id="booksy-menu" class="text-4xl sm:text-5xl">Booksy</h2>
-        <p class="mt-4 max-w-prose text-lg">
-          Diego, Roger, and Nic also keep extended menus on Booksy. Crossed-out prices show the
-          regular list price alongside the current Booksy rate.
-        </p>
-        <div class="mt-8">
-          <ServiceMenu />
         </div>
       </section>
     </div>

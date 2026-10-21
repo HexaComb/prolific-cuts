@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Pole from "../components/Pole.astro";
 import Tool from "../components/Tool.astro";
-import { barbers, shop, squareMenu } from "../data/shop";
+import { barbers, googleReviewsDetail, googleReviewsLabel, shop, squareMenu } from "../data/shop";
 import { instagram } from "../data/instagram";
 
 const description =
@@ -183,7 +183,7 @@ const description =
         </div>
         <div class="cut cut-3">
           <div class="hero-ledger">
-            <span class="hero-ledger-item">★ {shop.booksyRating} on Booksy</span>
+            <a class="hero-ledger-item" href={shop.googleReviews.url}>{googleReviewsLabel()}</a>
             <span class="hero-ledger-item">9 Local Barbers</span>
             <span class="hero-ledger-item">Walk-Ins &amp; Kids Welcome</span>
           </div>
@@ -207,10 +207,10 @@ const description =
           <h2 id="shop-heading" class="text-5xl text-balance sm:text-6xl">The shop on Shaw</h2>
           <Tool tool="brush" label="Pull up a chair" />
           <div class="shop-perks">
-            <div class="shop-perk">
-              <span class="shop-perk-title">★ 5.0 Rating</span>
-              <span class="text-sm opacity-85">120 reviews on the shop Booksy</span>
-            </div>
+            <a class="shop-perk" href={shop.googleReviews.url}>
+              <span class="shop-perk-title">{googleReviewsLabel()}</span>
+              <span class="text-sm opacity-85">{googleReviewsDetail()}</span>
+            </a>
             <div class="shop-perk">
               <span class="shop-perk-title">Every Chair Open</span>
               <span class="text-sm opacity-85">Kids, first cuts &amp; walk-ins welcome</span>
@@ -230,7 +230,8 @@ const description =
           </p>
           <p>
             Everyone’s welcome here, including kids and first haircuts. The shop is wheelchair
-            accessible, and our neighbors have us at <a class="draw font-medium underline underline-offset-4" href={shop.booksy}>{shop.booksyRating} on Booksy</a>.
+            accessible. Read what neighbors say in our
+            <a class="draw font-medium underline underline-offset-4" href={shop.googleReviews.url}>{googleReviewsLabel()}</a>.
           </p>
         </div>
       </div>
@@ -337,8 +338,8 @@ const description =
             <h2 id="book-heading" class="text-5xl text-balance sm:text-6xl">Book a chair</h2>
             <Tool tool="comb" label="One shop, nine chairs" />
             <p class="pt-2 text-lg">
-              Nine local barbers, each running their own chair. Book anyone on Square—Diego, Roger,
-              and Nic are also on Booksy. Walk on in if a chair is open, or give us a call.
+              Nine local barbers, each running their own chair. Book anyone on Square. Walk on in
+              if a chair is open, or give us a call.
             </p>
           </div>
           <a class="btn btn-line" href={shop.phoneHref}>{shop.phone}</a>
@@ -368,18 +369,10 @@ const description =
                         {barber.name}
                       </a>
                     </h3>
-                    <div class="barber-meta">
-                      {barber.bookingName && <p>Also on Booksy as <strong class="font-medium">{barber.bookingName}</strong></p>}
-                      {barber.rating && <span class="rating-chip">★ {barber.rating}</span>}
-                      {barber.gap && <p class="opacity-80">{barber.gap}</p>}
-                    </div>
                   </div>
                 </div>
                 <div class="barber-actions">
                   <a class="btn btn-fill" href={barber.square}>Book on Square</a>
-                  {barber.booksy && (
-                    <a class="btn btn-line" href={barber.booksy}>Book on Booksy</a>
-                  )}
                 </div>
               </li>
             ))
